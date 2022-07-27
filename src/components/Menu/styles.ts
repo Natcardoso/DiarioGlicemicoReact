@@ -3,17 +3,38 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 5rem 8rem;
+    justify-content: space-between;
+    padding: 3rem 8rem;
+    position: absolute;
+    width: 100%;
 
-    span{
-        cursor: pointer;
+    div {
+        a {
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 22px;
+            color: black;
+            transition: all 0.3s ease;
+
+            :hover {
+                color: var(--blue);
+            }
+        }
+    }
+`;
+
+export const DivRegister = styled.div`
+    a:nth-child(2) {
+        border-radius: 10px;
         margin-left: 4rem;
-        font-size: 32px;
-        font-weight: 400;
+        padding: 0.5rem 2rem;
+        border: 2px solid var(--blue);
+        box-shadow: 4px 0 26px -2px var(--blue-medium);
+        color: white;
+        background: var(--blue);
 
         :hover {
-            background-color: var(--);
+            background-color: var(--blue-lighterOpacity);
         }
     }
 `;

@@ -1,11 +1,30 @@
-import { Container } from "./styles";
+import { NavLink } from "react-router-dom";
+import { Container, DivRegister } from "./styles";
 
 const Menu = () => {
     return (
         <Container>
-            <span>Home</span>
-            <span>Entrar</span>
-            <span>Cadastro</span>
+            <div>
+                <NavLink
+                    to={"/"}
+                    style={({ isActive }) => {
+                        return { color: isActive ? "#4853E5" : "" };
+                    }}
+                >
+                    Home
+                </NavLink>
+            </div>
+            <DivRegister>
+                <NavLink
+                    to={"/entrar"}
+                    style={({ isActive }) => {
+                        return { color: isActive ? "#4853E5" : "" };
+                    }}
+                >
+                    Acesse sua conta
+                </NavLink>
+                <NavLink to={"/cadastroPasso1"}>Cadastre-se</NavLink>
+            </DivRegister>
         </Container>
     );
 };
