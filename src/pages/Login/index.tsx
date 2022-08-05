@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import Menu from "../../components/Menu";
 import Waves from "../../components/Waves";
 import * as s from "./styles";
-import { ReactComponent as Welcome } from "./welcomeBack.svg";
+import { ReactComponent as WelcomeImg } from "./welcomeBack.svg";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { MdError } from "react-icons/md";
 
 type DataForm = {
     email: string;
@@ -16,7 +17,10 @@ type DataForm = {
 const Login = () => {
     const schema = yup
         .object({
-            email: yup.string().email().required("Campo obrigatório!"),
+            email: yup
+                .string()
+                .email("Email inválido")
+                .required("Campo obrigatório!"),
             password: yup
                 .string()
                 .required("Campo obrigatório!")
@@ -29,7 +33,9 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<DataForm>({ resolver: yupResolver(schema) });
-    const onSubmit: SubmitHandler<DataForm> = (data) => console.log(data);
+    const onSubmit: SubmitHandler<DataForm> = (data) => {
+        console.log(data);
+    };
 
     return (
         <div>
@@ -39,44 +45,69 @@ const Login = () => {
                 <s.ContainerForm>
                     <h1>Entrar</h1>
                     <s.Form onSubmit={handleSubmit(onSubmit)}>
-                        <div>
-                            <input
-                                autoFocus
-                                placeholder="Email"
-                                type="email"
-                                {...register("email")}
-                            />
+                        <s.ContainerInput>
+                            <label>Email</label>
+                            <s.DivInput
+                                style={{
+                                    border:
+                                        errors.email && "1px solid var(--red)",
+                                }}
+                            >
+                                <input
+                                    autoFocus
+                                    placeholder="Ex: fulano@abc.com"
+                                    type="email"
+                                    {...register("email")}
+                                />
+                                {errors.email && (
+                                    <MdError size={22} className="iconError" />
+                                )}
+                            </s.DivInput>
                             <p>{errors.email?.message}</p>
-                        </div>
+                        </s.ContainerInput>
 
-                        <div>
-                            <input
-                                type="password"
-                                placeholder="Senha"
-                                {...register("password")}
-                                maxLength={6}
-                            />
+                        <s.ContainerInput>
+                            <label>Senha</label>
+                            <s.DivInput
+                                style={{
+                                    border:
+                                        errors.password &&
+                                        "1px solid var(--red)",
+                                }}
+                            >
+                                <input
+                                    type="password"
+                                    placeholder="A senha deve conter 6 caracters"
+                                    {...register("password")}
+                                    maxLength={6}
+                                />
+                                {errors.password && (
+                                    <MdError size={22} className="iconError" />
+                                )}
+                            </s.DivInput>
                             <p>{errors.password?.message}</p>
-                        </div>
+                        </s.ContainerInput>
 
                         <button type="submit">Entrar</button>
                     </s.Form>
-                    <span>
-                        Vocẽ ainda não possui uma conta? então {""}
-                        <Link
-                            to="/cadastroPasso1"
-                            style={{
-                                color: "red",
-                                fontWeight: "600",
-                                cursor: "pointer",
-                            }}
-                        >
-                            cadastre-se
-                        </Link>
-                        {""} agora!
-                    </span>
+                    <div className="textRegister">
+                        <span>
+                            Vocẽ ainda não possui uma conta? {""}
+                            <Link
+                                to="/cadastroPasso1"
+                                style={{
+                                    color: "var(--red)",
+                                    fontWeight: "600",
+                                    cursor: "pointer",
+                                }}
+                            >
+                                Cadastre-se
+                            </Link>
+                            {""} agora!
+                        </span>
+                    </div>
                 </s.ContainerForm>
-                <Welcome />
+                <WelcomeImg />
             </s.Container>
         </div>
     );

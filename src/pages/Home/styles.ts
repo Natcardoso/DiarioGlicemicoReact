@@ -40,7 +40,7 @@ export const ContainerText = styled.div`
         margin-top: 2rem;
 
         :hover {
-            background: var(--blue-darkset);
+            background: var(--blue-dark);
         }
     }
 `;

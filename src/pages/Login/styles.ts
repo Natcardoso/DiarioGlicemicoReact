@@ -8,21 +8,24 @@ export const Container = styled.div`
     height: 100vh;
 
     svg {
-        margin-top: 10rem;
+        margin-top: 8rem;
     }
 `;
 
 export const ContainerForm = styled.div`
-    width: 40%;
-    text-align: center;
+    width: 38%;
 
     h1 {
         margin-bottom: 1rem;
     }
 
-    span {
-        font-size: 18px;
-        color: var(--gray-medium);
+    .textRegister {
+        text-align: center;
+
+        span {
+            font-size: 18px;
+            color: var(--gray-medium);
+        }
     }
 `;
 
@@ -33,25 +36,17 @@ export const Form = styled.form`
 
     div {
         width: 100%;
-        margin-bottom: 3rem;
+        margin-bottom: 0.3rem;
         position: relative;
 
         input {
-            width: 100%;
+            width: 90%;
             font-size: 20px;
-            padding: 1rem;
-            background: var(--gray-lighter);
-            border-radius: 8px;
+            padding: 0.5rem;
 
             ::placeholder {
                 color: var(--gray-dark);
             }
-        }
-
-        p {
-            position: absolute;
-            right: 0;
-            color: red;
         }
     }
 
@@ -63,11 +58,49 @@ export const Form = styled.form`
         background: var(--blue);
         font-size: 20px;
         color: white;
-        margin-bottom: 1rem;
+        margin: 1rem 0;
         transition: all 0.3s ease;
 
         :hover {
-            background: var(--blue-darkset);
+            background: var(--blue-dark);
         }
+    }
+`;
+
+export const ContainerInput = styled.div`
+    padding-bottom: 2rem;
+
+    p {
+        position: absolute;
+        color: var(--red);
+    }
+`;
+
+export const DivInput = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1.5px solid var(--gray-light);
+    border-radius: 8px;
+    padding: 0.4rem;
+
+    .iconError {
+        margin-right: 1rem;
+        color: var(--red);
+    }
+
+    input {
+        font-size: 20px;
+        border: none;
+        outline: none;
+        width: 80%;
+
+        ::placeholder {
+            color: var(--gray-dark);
+        }
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
     }
 `;

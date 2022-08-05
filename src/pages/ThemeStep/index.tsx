@@ -1,6 +1,6 @@
-import React, { Children } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { ReactComponent as LogoRegister } from "./doctorRegister.svg";
+import { ReactComponent as LogoP1 } from "./logoPasso1.svg";
+import { ReactComponent as LogoP2 } from "./logoPasso2.svg";
+import { ReactComponent as LogoP3 } from "./logoPasso3.svg";
 import * as s from "./styles";
 import MenuSteps from "../../components/Steps/MenuSteps";
 import { useLocation } from "react-router-dom";
@@ -13,7 +13,15 @@ const Theme = ({ children }: any) => {
             <s.Container>
                 <s.ContainerForm>
                     <s.ContainerLogo>
-                        <LogoRegister />
+                        {(location.pathname == "/cadastroPasso1" && (
+                            <LogoP1 />
+                        )) ||
+                            (location.pathname === "/cadastroPasso2" && (
+                                <LogoP2 />
+                            )) ||
+                            (location.pathname === "/cadastroPasso3" && (
+                                <LogoP3 />
+                            ))}
                     </s.ContainerLogo>
                     <s.ContainerStep>
                         <MenuSteps active={location.pathname} />

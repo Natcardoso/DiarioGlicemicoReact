@@ -20,16 +20,33 @@ export default createGlobalStyle`
         --blue-light: #BFD1FA;
         --blue-medium: #7E9BF3;
         --blue: #4853E5;
-        --blue-darkset: #373FAB;
+        --blue-dark: #3942B6;
 
-        --gray-lighter: #dcd9d94f;
+        --gray-lighterOpacity: #dcd9d943;
+        --gray-lighter: #dad9d9b7;
         --gray-light: #C5C3C6;
         --gray-medium: #808080;
-        --gray-dark: #2a2929;
+        --gray-dark: #383838;
 
         --red-light:rgb(238, 75, 87);
         --red: rgb(209, 44, 56);
         --red-dark: rgb(187, 38, 49);
+
+        --green: #35c369;
+
+        --fundoModal: #2a2929f2;
+        --fundoControl: #eaeaeaed;
+
+        --Option1: #b2820b;
+        --Option1Background:  rgb(178 130 11 / 20%); 
+        --Option2: #2BA600;
+        --Option2Background: rgb(43 166 0 / 20%);
+        /* --Option3:; */
+        /* --Option3Background:; */
+        /* --Option4:; */
+        /* --Option4Background:; */
+        /* --Option5:; */
+        /* --Option5Background:;  */
     }
 
     .fade-enter {
@@ -41,6 +58,6 @@ export default createGlobalStyle`
      opacity: 1;
         /* transform: translate(0vh); */
 
-        transition: opacity 300ms ease-out, transform 400ms ease-in;
+        transition: opacity 500ms ease-in-out, transform 400ms ease-in;
     }
 `;

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Steps = styled.div`
     height: 5rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--gray-light);
@@ -11,15 +10,18 @@ export const Steps = styled.div`
     div {
         display: flex;
         align-items: center;
+        margin-right: 4rem;
 
         svg {
             border-radius: 20%;
             padding: 10px;
-            background: var(--gray-lighter);
-            margin-right: 1rem;
+            color: var(--blue-dark);
+            background: var(--gray-lighterOpacity);
+            margin-right: 0.5rem;
         }
 
         span {
+            font-weight: 500;
             font-size: 20px;
         }
     }

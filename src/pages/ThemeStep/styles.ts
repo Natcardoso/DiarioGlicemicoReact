@@ -6,7 +6,7 @@ export const Container = styled.div`
     justify-content: center;
     height: 100vh;
     padding: 0 8rem;
-    background: var(--blue-medium);
+    background: rgb(244, 243, 246);
 `;
 
 export const ContainerForm = styled.div`
@@ -18,17 +18,17 @@ export const ContainerForm = styled.div`
 `;
 
 export const ContainerLogo = styled.div`
-    width: 65%;
+    width: 50%;
     border-radius: 24px 0 0 24px;
-    background: var(--blue-lighter);
+    background: var(--blue-dark);
 
     svg {
-        margin-top: 6rem;
+        margin-top: 8rem;
     }
 `;
 
 export const ContainerStep = styled.div`
     width: 100%;
-    padding: 6rem;
+    padding: 5rem;
     position: relative;
 `;

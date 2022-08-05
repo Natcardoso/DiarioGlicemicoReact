@@ -14,35 +14,56 @@ export const Form = styled.form`
     span {
         color: var(--gray-medium);
         font-size: 18px;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
+    }
+`;
+
+export const ContainerInput = styled.div`
+    margin-bottom: 2rem;
+
+    p {
+        position: absolute;
+        color: var(--red);
+    }
+`;
+
+export const DivInput = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1.5px solid var(--gray-light);
+    border-radius: 8px;
+    padding: 0.4rem;
+
+    .iconError {
+        margin-right: 1rem;
+        color: var(--red);
     }
 
-    div {
-        margin-bottom: 2rem;
+    input[type="date"] {
+        color: var(--gray-medium);
+    }
 
-        input {
-            width: 100%;
-            font-size: 20px;
-            padding: 0.8rem;
-            background: var(--gray-lighter);
-            border-radius: 8px;
+    input {
+        font-size: 20px;
+        border: none;
+        outline: none;
+        width: 80%;
 
-            ::placeholder {
-                color: var(--gray-dark);
-            }
+        ::placeholder {
+            color: var(--gray-dark);
         }
+    }
 
-        p {
-            position: absolute;
-            color: red;
-        }
+    input[type="number"] {
+        -moz-appearance: textfield;
     }
 `;
 
 export const ContainerButton = styled.div`
     position: absolute;
-    right: 2.5rem;
-    bottom: 0;
+    right: 5rem;
+    bottom: 2rem;
 
     button {
         width: max-content;
@@ -56,15 +77,16 @@ export const ContainerButton = styled.div`
         margin-left: 1rem;
 
         :hover {
-            background: var(--blue-darkset);
+            background: var(--blue-dark);
         }
     }
 
     .back {
-        background: var(--gray-light);
+        background: transparent;
+        color: black;
 
         :hover {
-            background: var(--gray-medium);
+            background: var(--gray-lighterOpacity);
         }
     }
 
@@ -80,11 +102,49 @@ export const ContainerButton = styled.div`
 export const DubleInput = styled.div`
     display: flex;
     justify-content: space-between;
+    margin: 0 !important;
 `;
 
-export const DivSeparatorInput = styled.div``;
+export const DivSeparatorInput = styled.div`
+    width: 49%;
 
-export const DivOption = styled.div`
+    .dontSay {
+        display: flex;
+        margin-top: 1rem;
+        color: var(--gray-medium);
+        font-weight: 500;
+        font-size: 18px;
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        label {
+            width: 71%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 3rem;
+            cursor: pointer;
+            border: 1.5px solid var(--gray-light);
+            border-radius: 8px;
+        }
+
+        input[type="radio"]:checked + label {
+            color: var(--blue);
+            border: 2px solid var(--blue-medium);
+            background: var(--blue-lighterOpacity);
+        }
+
+        input:hover + label {
+            color: var(--blue);
+            border: 2px solid var(--blue-medium);
+            background: var(--blue-lighterOpacity);
+        }
+    }
+`;
+
+export const DivOptionStep2 = styled.div`
     margin: 0 !important;
     display: flex;
 
@@ -97,7 +157,7 @@ export const DivOption = styled.div`
         width: 10rem;
         cursor: pointer;
         height: 7rem;
-        border: 2px solid var(--gray-light);
+        border: 1.5px solid var(--gray-light);
         border-radius: 8px;
         position: relative;
         color: var(--gray-medium);
@@ -113,6 +173,48 @@ export const DivOption = styled.div`
 
         &:not(:last-of-type) {
             margin-right: 1rem;
+        }
+    }
+
+    input[type="radio"]:checked + label {
+        color: var(--blue);
+        border: 2px solid var(--blue-medium);
+        background: var(--blue-lighterOpacity);
+    }
+
+    input:hover + label {
+        color: var(--blue);
+        border: 2px solid var(--blue-medium);
+        background: var(--blue-lighterOpacity);
+    }
+`;
+
+export const DivOptionStep3 = styled.div`
+    margin-bottom: 1rem;
+    margin-top: 0.4rem;
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    label {
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid var(--gray-light);
+        border-radius: 8px;
+        color: var(--gray-medium);
+        font-weight: 500;
+        font-size: 18px;
+        padding: 0 1rem;
+
+        &:not(:last-of-type) {
+            margin-right: 1rem;
+        }
+
+        :hover {
+            color: var(--blue);
+            border: 2px solid var(--blue-medium);
+            background: var(--blue-lighterOpacity);
         }
     }
 
