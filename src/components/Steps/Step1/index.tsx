@@ -1,131 +1,126 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import Theme from "../../../pages/ThemeStep";
 import * as s from "../styles";
+import { MdError } from "react-icons/md";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { MdError } from "react-icons/md";
+import { DataProps } from "../../../pages/Register/index";
+import { useNavigate } from "react-router-dom";
+import { useStateMachine } from "little-state-machine";
+import updateForm from "../../../utils/updateForm";
 
-type DataForm = {
-    email: string;
-    password: number;
-    confirmPassword: number;
+type Props = {
+    setPageStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Step1 = () => {
-    const navigate = useNavigate();
+const Step1 = ({ setPageStep }: Props): JSX.Element => {
     const required = "Campo obrigatório!";
-
-    const schema = yup
-        .object({
-            email: yup.string().required(required).email("Email inválido!"),
-            password: yup
-                .string()
-                .required(required)
-                .min(6, "A senha deve conter no minímo 6 dígitos"),
-            confirmPassword: yup
-                .string()
-                .required(required)
-                .min(6, "A senha deve conter no minímo 6 dígitos"),
-        })
-        .required();
+    const navigate = useNavigate();
+    const { actions } = useStateMachine({ updateForm });
+    const schema = yup.object({
+        email: yup.string().required(required).email("Email inválido!"),
+        password: yup
+            .string()
+            .required(required)
+            .min(6, "A senha deve conter no minímo 6 dígitos"),
+        confirmPassword: yup
+            .string()
+            .required(required)
+            .min(6, "A senha deve conter no minímo 6 dígitos"),
+    });
 
     const {
         register,
         handleSubmit,
         setError,
         formState: { errors },
-    } = useForm<DataForm>({ resolver: yupResolver(schema) });
-    const onSubmit: SubmitHandler<DataForm> = (data) => {
+    } = useForm<DataProps>({ resolver: yupResolver(schema) });
+    const onSubmit: SubmitHandler<DataProps> = (data) => {
         if (data.password !== data.confirmPassword) {
             setError("confirmPassword", {
                 type: "max",
                 message: "A senha está incorreta, Digite novamente!",
             });
         } else {
-            navigate("/cadastroPasso2");
+            setPageStep((cur) => cur + 1);
+            actions.updateForm(data);
         }
     };
 
     return (
-        <Theme>
-            <s.Form onSubmit={handleSubmit(onSubmit)}>
-                <h2>Cadastro</h2>
-                <span>
-                    Preencha os campos para obter os dados do seu acesso!
-                </span>
-                <s.ContainerInput>
-                    <label>Email</label>
-                    <s.DivInput
-                        style={{
-                            border: errors.email && "1px solid var(--red)",
-                        }}
-                    >
-                        <input
-                            autoFocus
-                            placeholder="Ex: fulano@abc.com"
-                            type="email"
-                            {...register("email")}
-                        />
-                        {errors.email && (
-                            <MdError size={22} className="iconError" />
-                        )}
-                    </s.DivInput>
-                    <p>{errors.email?.message}</p>
-                </s.ContainerInput>
-                <s.ContainerInput>
-                    <label>Senha</label>
-                    <s.DivInput
-                        style={{
-                            border: errors.password
-                                ? "1px solid var(--red)"
-                                : "",
-                        }}
-                    >
-                        <input
-                            type="password"
-                            maxLength={6}
-                            placeholder="A senha deve conter 6 caracters"
-                            {...register("password")}
-                        />
-                        {errors.password && (
-                            <MdError size={22} className="iconError" />
-                        )}
-                    </s.DivInput>
-                    <p>{errors.password?.message}</p>
-                </s.ContainerInput>
-                <s.ContainerInput>
-                    <label>Confirme sua senha</label>
-                    <s.DivInput
-                        style={{
-                            border: errors.confirmPassword
-                                ? "1px solid var(--red)"
-                                : "",
-                        }}
-                    >
-                        <input
-                            type="password"
-                            maxLength={6}
-                            {...register("confirmPassword")}
-                        />
-                        {errors.confirmPassword && (
-                            <MdError size={22} className="iconError" />
-                        )}
-                    </s.DivInput>
-                    <p>{errors.confirmPassword?.message}</p>
-                </s.ContainerInput>
-                <s.ContainerButton>
-                    <button
-                        className="cancel"
-                        type="button"
-                        onClick={() => navigate("/")}
-                    >
-                        Cancelar
-                    </button>
-                    <button type="submit">Próximo</button>
-                </s.ContainerButton>
-            </s.Form>
-        </Theme>
+        <s.Form onSubmit={handleSubmit(onSubmit)}>
+            <h2>Cadastro</h2>
+            <span>Preencha os campos para obter os dados do seu acesso!</span>
+            <s.ContainerInput>
+                <label>Email</label>
+                <s.DivInput
+                    style={{
+                        border: errors.email && "1px solid var(--red)",
+                    }}
+                >
+                    <input
+                        autoFocus
+                        placeholder="Ex: fulano@abc.com"
+                        type="email"
+                        {...register("email")}
+                    />
+                    {errors.email && (
+                        <MdError size={22} className="iconError" />
+                    )}
+                </s.DivInput>
+                <p>{errors.email?.message}</p>
+            </s.ContainerInput>
+            <s.ContainerInput>
+                <label>Senha</label>
+                <s.DivInput
+                    style={{
+                        border: errors.password ? "1px solid var(--red)" : "",
+                    }}
+                >
+                    <input
+                        type="password"
+                        maxLength={6}
+                        placeholder="A senha deve conter 6 caracters"
+                        {...register("password")}
+                    />
+                    {errors.password && (
+                        <MdError size={22} className="iconError" />
+                    )}
+                </s.DivInput>
+                <p>{errors.password?.message}</p>
+            </s.ContainerInput>
+            <s.ContainerInput>
+                <label>Confirme sua senha</label>
+                <s.DivInput
+                    style={{
+                        border: errors.confirmPassword
+                            ? "1px solid var(--red)"
+                            : "",
+                    }}
+                >
+                    <input
+                        placeholder="Digite a senha novamente"
+                        type="password"
+                        maxLength={6}
+                        {...register("confirmPassword")}
+                    />
+                    {errors.confirmPassword && (
+                        <MdError size={22} className="iconError" />
+                    )}
+                </s.DivInput>
+                <p>{errors.confirmPassword?.message}</p>
+            </s.ContainerInput>
+            <s.ContainerButton>
+                <input
+                    className="back"
+                    type="button"
+                    onClick={() => {
+                        navigate("/");
+                    }}
+                    value={"Cancelar"}
+                />
+                <input type="submit" value={"Próximo"} />
+            </s.ContainerButton>
+        </s.Form>
     );
 };
 

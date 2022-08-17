@@ -5,10 +5,10 @@ export const Container = styled.div`
     height: 100vh;
 
     svg {
-        height: 150%;
+        height: 160%;
         position: fixed;
-        bottom: 20rem;
-        transform: rotate(-34deg);
+        bottom: 14rem;
+        transform: rotate(-30deg);
         z-index: -1;
     }
 `;

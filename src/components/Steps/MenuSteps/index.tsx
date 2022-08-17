@@ -4,14 +4,14 @@ import { FaBook } from "react-icons/fa";
 import * as s from "./styles";
 
 type Props = {
-    active: string;
+    pageStep: number;
 };
 
-const MenuSteps = ({ active }: Props) => {
+const MenuSteps = ({ pageStep }: Props) => {
     return (
         <s.Steps>
             <div>
-                {active == "/cadastroPasso2" || active == "/cadastroPasso3" ? (
+                {pageStep == 1 || pageStep == 2 ? (
                     <BsCheckCircleFill
                         size={50}
                         color={"white"}
@@ -19,7 +19,7 @@ const MenuSteps = ({ active }: Props) => {
                     />
                 ) : (
                     "" ||
-                    (active == "/cadastroPasso1" ? (
+                    (pageStep == 0 ? (
                         <FaBook
                             size={50}
                             color="white"
@@ -33,7 +33,7 @@ const MenuSteps = ({ active }: Props) => {
                 <span>Cadastro</span>
             </div>
             <div>
-                {active == "/cadastroPasso3" ? (
+                {pageStep == 2 ? (
                     <BsCheckCircleFill
                         size={50}
                         color={"white"}
@@ -42,11 +42,8 @@ const MenuSteps = ({ active }: Props) => {
                 ) : (
                     <BsFillPersonFill
                         style={{
-                            background:
-                                active == "/cadastroPasso2"
-                                    ? "var(--blue-dark)"
-                                    : "",
-                            color: active == "/cadastroPasso2" ? "white" : "",
+                            background: pageStep == 1 ? "var(--blue-dark)" : "",
+                            color: pageStep == 1 ? "white" : "",
                         }}
                         size={50}
                     />
@@ -54,7 +51,7 @@ const MenuSteps = ({ active }: Props) => {
                 <span>Dados pessoais</span>
             </div>
             <div>
-                {active == "/cadastroPasso3" ? (
+                {pageStep == 2 ? (
                     <BiPlusMedical
                         size={50}
                         color="white"

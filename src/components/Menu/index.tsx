@@ -23,7 +23,7 @@ const Menu = () => {
                 >
                     Acesse sua conta
                 </NavLink>
-                <NavLink to={"/cadastroPasso1"}>Cadastre-se</NavLink>
+                <NavLink to={"/cadastro"}>Cadastre-se</NavLink>
             </DivRegister>
         </Container>
     );

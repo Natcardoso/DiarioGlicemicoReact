@@ -5,7 +5,7 @@ export const ContainerTable = styled.div`
     border-radius: 20px;
     background: #dee8fe91;
     margin: 1rem 2rem;
-    height: 48vh;
+    height: 76vh;
 
     p {
         font-size: 28px;
@@ -54,7 +54,19 @@ export const ContainerTable = styled.div`
                 background-color: var(--gray-lighterOpacity);
             }
 
-            .action {
+            svg {
+                cursor: pointer;
+            }
+
+            .edit:hover {
+                color: var(--green);
+            }
+
+            .closed:hover {
+                color: var(--red);
+            }
+
+            /* .action {
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
@@ -70,7 +82,7 @@ export const ContainerTable = styled.div`
                 svg:nth-child(2):hover {
                     color: var(--red);
                 }
-            }
+            } */
         }
 
         tr td:nth-child(1),
@@ -86,6 +98,16 @@ export const ContainerTable = styled.div`
 
         tr td:nth-child(6) {
             width: 8rem;
+            text-align: center;
+        }
+
+        tr td:nth-child(7) {
+            width: 4rem;
+            text-align: center;
+        }
+
+        tr td:nth-child(8) {
+            width: 4rem;
             text-align: center;
         }
     }
@@ -112,21 +134,24 @@ export const ContainerFilter = styled.div`
     }
 
     .buttonAdd {
-        background-color: var(--blue-dark);
-        border-radius: 20px;
         display: flex;
         align-items: center;
-        padding: 0.3rem 1rem;
+        padding: 0.3rem 0;
+        padding-right: 1rem;
         cursor: pointer;
         font-weight: 500;
+        font-size: 20px;
+        background-color: transparent;
 
         svg {
+            border-radius: 50px;
+            background-color: var(--blue-dark);
             margin-right: 0.5rem;
-        }
-
-        span,
-        svg {
             color: white;
         }
     }
+`;
+
+export const DivTable = styled.div`
+    border: 2px solid red;
 `;

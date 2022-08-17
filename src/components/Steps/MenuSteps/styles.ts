@@ -11,13 +11,14 @@ export const Steps = styled.div`
         display: flex;
         align-items: center;
         margin-right: 4rem;
+        flex-direction: column;
 
         svg {
             border-radius: 20%;
             padding: 10px;
             color: var(--blue-dark);
             background: var(--gray-lighterOpacity);
-            margin-right: 0.5rem;
+            /* margin-right: 0.5rem; */
         }
 
         span {

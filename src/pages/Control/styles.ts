@@ -15,7 +15,7 @@ export const ContainerPage = styled.div`
 `;
 
 export const ContainerMenu = styled.div`
-    width: 15%;
+    width: 20%;
 
     span {
         font-size: 30px;
@@ -25,6 +25,7 @@ export const ContainerMenu = styled.div`
         display: flex;
         flex-direction: column;
         margin-top: 5rem;
+        margin-left: 2rem;
 
         div {
             padding: 1rem;
@@ -40,7 +41,7 @@ export const ContainerMenu = styled.div`
 
             p {
                 color: var(--gray-medium);
-                margin-left: 1rem;
+                margin-left: 2rem;
             }
 
             :hover {
@@ -162,21 +163,35 @@ export const Profile = styled.div`
         font-size: 20px;
         font-weight: 700;
 
-        svg {
+        svg:nth-child(2) {
             cursor: pointer;
         }
     }
 
-    div:nth-child(2) {
+    .user {
         display: flex;
-        align-items: center;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         font-size: 24px;
         font-weight: 500;
 
-        svg {
-            margin-bottom: 1rem;
+        div:nth-child(1) {
+            margin: 0;
+
+            svg {
+                margin-right: 1rem;
+            }
+        }
+
+        .textDescriptionUser {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+            font-weight: 300;
+            position: absolute;
+            top: 12rem;
+            right: 3rem;
         }
     }
 `;

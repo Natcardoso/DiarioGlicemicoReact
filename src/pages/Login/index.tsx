@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Menu from "../../components/Menu";
 import Waves from "../../components/Waves";
 import * as s from "./styles";
@@ -8,13 +8,17 @@ import { ReactComponent as WelcomeImg } from "./welcomeBack.svg";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { MdError } from "react-icons/md";
+import ModalError from "../../components/MessageValidation/Error";
 
 type DataForm = {
     email: string;
     password: string;
 };
 
-const Login = () => {
+const Login = (): JSX.Element => {
+    const [modalVisible, setModalVisible] = useState(false);
+    const values = JSON.parse(localStorage.getItem("user")!);
+    const navigate = useNavigate();
     const schema = yup
         .object({
             email: yup
@@ -34,7 +38,16 @@ const Login = () => {
         formState: { errors },
     } = useForm<DataForm>({ resolver: yupResolver(schema) });
     const onSubmit: SubmitHandler<DataForm> = (data) => {
-        console.log(data);
+        const resultFindUser = values.some(
+            (value: DataForm) =>
+                value.email === data.email && value.password === data.password
+        );
+
+        if (resultFindUser) {
+            navigate("/controle");
+        } else {
+            setModalVisible(true);
+        }
     };
 
     return (
@@ -94,7 +107,7 @@ const Login = () => {
                         <span>
                             Vocẽ ainda não possui uma conta? {""}
                             <Link
-                                to="/cadastroPasso1"
+                                to="/cadastro"
                                 style={{
                                     color: "var(--red)",
                                     fontWeight: "600",
@@ -109,6 +122,13 @@ const Login = () => {
                 </s.ContainerForm>
                 <WelcomeImg />
             </s.Container>
+            {modalVisible && (
+                <ModalError
+                    setModalVisible={setModalVisible}
+                    message="Você ainda não possui um cadastro."
+                    type="cadastro"
+                />
+            )}
         </div>
     );
 };

@@ -17,28 +17,38 @@ export const Modal = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 35%;
-    height: 55%;
+    width: 40%;
+    height: 60%;
     border-radius: 10px;
     background-color: white;
+    padding: 2rem;
+    position: relative;
 
-    span:nth-child(2) {
-        font-size: 32px;
-        font-weight: 600;
+    .close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+    }
+
+    svg:nth-child(2) {
+        width: 50%;
     }
 
     span:nth-child(3) {
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+
+    span:nth-child(4) {
         font-size: 24px;
         font-weight: 300;
         color: var(--gray-medium);
     }
 
-    svg {
-        width: 50%;
-    }
-
     button {
-        width: 20%;
+        width: max-content;
         border-radius: 8px;
         padding: 1rem;
         cursor: pointer;

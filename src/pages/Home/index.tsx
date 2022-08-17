@@ -25,7 +25,7 @@ const Home = () => {
                 </s.ContainerText>
                 <Logo />
             </s.Container>
-            <s.ContainerApresentation></s.ContainerApresentation>
+            {/* <s.ContainerApresentation></s.ContainerApresentation> */}
         </>
     );
 };

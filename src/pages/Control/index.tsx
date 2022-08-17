@@ -5,7 +5,7 @@ import { RiEditCircleFill } from "react-icons/ri";
 import { IoExit } from "react-icons/io5";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { MdSpaceDashboard } from "react-icons/md";
-import IconWelcome from "./gotaSangue.png";
+import IconWelcome from "./img/gotaSangue.png";
 import Table from "../../components/Table";
 
 const Control = () => {
@@ -39,25 +39,7 @@ const Control = () => {
                         </div>
                         <img src={IconWelcome}></img>
                     </s.Welcome>
-                    <s.ContainerCard>
-                        <p>Curiosidade</p>
-                        <s.Card>
-                            <div>
-                                <span>Os tipos de diabetes</span>
-                            </div>
-                            <div>
-                                <span>Exercícios para diabéticos</span>
-                            </div>
-                            <div>
-                                <span>Alimentos que ajudam no controle</span>
-                            </div>
-                            <div>
-                                <span>
-                                    Dicas que todos diabéticos deveriam saber!
-                                </span>
-                            </div>
-                        </s.Card>
-                    </s.ContainerCard>
+
                     <Table />
                 </s.DivContent>
                 <s.ContainerProfile>
@@ -66,11 +48,15 @@ const Control = () => {
                             <span>Meu perfil</span>
                             <RiEditCircleFill size={30} />
                         </div>
-                        <div>
-                            <FaUserCircle size={90} />
-                            <span>Natália A Cardoso</span>
-                            <span>Diabete tipo 1</span>
-                            <span>20 anos</span>
+                        <div className="user">
+                            <div>
+                                <FaUserCircle size={90} />
+                                <span>Natália A Cardoso</span>
+                            </div>
+                            <div className="textDescriptionUser">
+                                <span>Diabete tipo 1</span>
+                                <span>20 anos</span>
+                            </div>
                         </div>
                     </s.Profile>
                 </s.ContainerProfile>
@@ -78,5 +64,25 @@ const Control = () => {
         </s.Container>
     );
 };
+
+{
+    /* <s.ContainerCard>
+    <p>Curiosidade</p>
+    <s.Card>
+        <div>
+            <span>Os tipos de diabetes</span>
+        </div>
+        <div>
+            <span>Exercícios para diabéticos</span>
+        </div>
+        <div>
+            <span>Alimentos que ajudam no controle</span>
+        </div>
+        <div>
+            <span>Dicas que todos diabéticos deveriam saber!</span>
+        </div>
+    </s.Card>
+</s.ContainerCard>; */
+}
 
 export default Control;

@@ -1,4 +1,4 @@
-import * as s from "./styles";
+import * as s from "../styles";
 import { ReactComponent as ImgSuccess } from "../imgs/success.svg";
 import { useNavigate } from "react-router-dom";
 
@@ -13,9 +13,11 @@ const ModalSuccess = ({ message }: Props): JSX.Element => {
         <s.ContainerModal>
             <s.Modal>
                 <ImgSuccess />
-                <span>Excelente!</span>
+                <span>Ebaa!</span>
                 <span>{message}</span>
-                <button onClick={() => navigate("/entrar")}>Ok</button>
+                <button type="button" onClick={() => navigate("/entrar")}>
+                    Ok
+                </button>
             </s.Modal>
         </s.ContainerModal>
     );

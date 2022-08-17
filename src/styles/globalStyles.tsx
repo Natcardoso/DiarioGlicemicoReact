@@ -41,12 +41,12 @@ export default createGlobalStyle`
         --Option1Background:  rgb(178 130 11 / 20%); 
         --Option2: #2BA600;
         --Option2Background: rgb(43 166 0 / 20%);
-        /* --Option3:; */
-        /* --Option3Background:; */
-        /* --Option4:; */
-        /* --Option4Background:; */
-        /* --Option5:; */
-        /* --Option5Background:;  */
+        --Option3: #394CA4;
+        --Option3Background: rgb(57 76 164 / 20%);
+        --Option4: #EF4141;
+        --Option4Background: rgb(239 65 65 / 20%);
+        --Option5: #B115BE;
+        --Option5Background: rgb(177 21 190 / 20%); 
     }
 
     .fade-enter {

@@ -65,7 +65,7 @@ export const ContainerButton = styled.div`
     right: 5rem;
     bottom: 2rem;
 
-    button {
+    input {
         width: max-content;
         border-radius: 8px;
         padding: 1rem;

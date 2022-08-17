@@ -7,7 +7,7 @@ export const Container = styled.div`
     margin: 0 8rem;
     height: 100vh;
 
-    svg {
+    svg:nth-child(1) {
         margin-top: 8rem;
     }
 `;
@@ -31,24 +31,7 @@ export const ContainerForm = styled.div`
 
 export const Form = styled.form`
     display: flex;
-    align-items: center;
     flex-direction: column;
-
-    div {
-        width: 100%;
-        margin-bottom: 0.3rem;
-        position: relative;
-
-        input {
-            width: 90%;
-            font-size: 20px;
-            padding: 0.5rem;
-
-            ::placeholder {
-                color: var(--gray-dark);
-            }
-        }
-    }
 
     button {
         width: 100%;
@@ -93,7 +76,7 @@ export const DivInput = styled.div`
         font-size: 20px;
         border: none;
         outline: none;
-        width: 80%;
+        width: 90%;
 
         ::placeholder {
             color: var(--gray-dark);

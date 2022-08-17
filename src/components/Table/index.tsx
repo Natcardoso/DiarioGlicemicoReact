@@ -33,7 +33,8 @@ const Table = () => {
                         <td>Glicose</td>
                         <td>Correção</td>
                         <td>Observações</td>
-                        <td>Ações</td>
+                        <td>Editar</td>
+                        <td>Excluir</td>
                     </tr>
 
                     <tr className="data">
@@ -42,8 +43,10 @@ const Table = () => {
                         <td>150</td>
                         <td>5</td>
                         <td>#</td>
-                        <td className="action">
+                        <td className="edit">
                             <FiEdit2 size={20} />
+                        </td>
+                        <td className="closed">
                             <VscTrash size={20} />
                         </td>
                     </tr>
@@ -54,14 +57,18 @@ const Table = () => {
                         <td>150</td>
                         <td>5</td>
                         <td>#</td>
-                        <td className="action">
+                        <td>
                             <FiEdit2 size={20} />
+                        </td>
+                        <td>
                             <VscTrash size={20} />
                         </td>
                     </tr>
                 </table>
             </s.ContainerTable>
-            {modalAddData && <ModalFormData />}
+            {modalAddData && (
+                <ModalFormData setModalAddData={setModalAddData} />
+            )}
         </>
     );
 };
