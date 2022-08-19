@@ -35,7 +35,7 @@ const Register = () => {
         } else if (pageStep === 1) {
             return <Step2 setPageStep={setPageStep} />;
         } else {
-            return <Step3 />;
+            return <Step3 setPageStep={setPageStep} />;
         }
     };
 

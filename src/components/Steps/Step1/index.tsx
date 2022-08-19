@@ -16,8 +16,8 @@ const Step1 = ({ setPageStep }: Props): JSX.Element => {
     const required = "Campo obrigatório!";
     const navigate = useNavigate();
     const { actions } = useStateMachine({ updateForm });
-    const schema = yup.object({
-        email: yup.string().required(required).email("Email inválido!"),
+    const schema = yup.object().shape({
+        email: yup.string().email("Email inválido!").required(required),
         password: yup
             .string()
             .required(required)
@@ -60,7 +60,6 @@ const Step1 = ({ setPageStep }: Props): JSX.Element => {
                     <input
                         autoFocus
                         placeholder="Ex: fulano@abc.com"
-                        type="email"
                         {...register("email")}
                     />
                     {errors.email && (

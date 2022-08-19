@@ -9,7 +9,11 @@ import { useStateMachine } from "little-state-machine";
 import updateForm from "../../../utils/updateForm";
 import { ValuesContext } from "../../../context/ValuesForm";
 
-const Step3 = (): JSX.Element => {
+type Props = {
+    setPageStep: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const Step3 = ({ setPageStep }: Props): JSX.Element => {
     const [modalVisible, setModalVisible] = useState(false);
     const { values, setValues } = useContext(ValuesContext);
     const required = "Campo obrigatório!";
@@ -112,7 +116,14 @@ const Step3 = (): JSX.Element => {
                 <p>{errors.insulina?.message}</p>
             </s.DivOptionStep3>
             <s.ContainerButton>
-                <input className="back" type="button" value={"Voltar"} />
+                <input
+                    className="back"
+                    type="button"
+                    onClick={() => {
+                        setPageStep((cur) => cur - 1);
+                    }}
+                    value={"Voltar"}
+                />
                 <input type="submit" value={"Concluir"} />
             </s.ContainerButton>
             {modalVisible && (

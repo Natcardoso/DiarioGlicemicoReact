@@ -15,7 +15,8 @@ export const ContainerTable = styled.div`
     }
 
     table {
-        background-color: white;
+        table-layout: fixed;
+        /* background-color: white;
         width: 100%;
         overflow: hidden;
         border-collapse: collapse;
@@ -23,27 +24,35 @@ export const ContainerTable = styled.div`
         -webkit-border-radius: 20px;
         -moz-border-radius: 20px;
         border-radius: 20px;
-        cursor: default;
+        cursor: default; */
 
-        .thead {
+        .tbl-header {
             background-color: var(--blue-dark);
             color: white;
 
-            td {
+            th {
                 font-size: 18px;
                 padding: 1rem;
+                font-weight: 500;
             }
         }
 
-        .data td {
+        .tbl-content {
+            height: 40vh;
+            overflow-x: auto;
+            margin-top: 0px;
+            border: 2px solid red;
+        }
+
+        /* .data td {
             color: var(--gray-medium);
             font-weight: 300;
             font-size: 16px;
 
             padding: 1rem;
-        }
+        } */
 
-        .data {
+        /* .data {
             border-top: 1px solid var(--gray-lighter);
 
             :not(:last-child) {
@@ -64,9 +73,9 @@ export const ContainerTable = styled.div`
 
             .closed:hover {
                 color: var(--red);
-            }
+            } */
 
-            /* .action {
+        /* .action {
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
@@ -83,9 +92,9 @@ export const ContainerTable = styled.div`
                     color: var(--red);
                 }
             } */
-        }
+    }
 
-        tr td:nth-child(1),
+    /* tr td:nth-child(1),
         tr td:nth-child(3),
         tr td:nth-child(4) {
             width: 3rem;
@@ -109,8 +118,8 @@ export const ContainerTable = styled.div`
         tr td:nth-child(8) {
             width: 4rem;
             text-align: center;
-        }
-    }
+        } */
+    /* } */
 `;
 
 export const ContainerFilter = styled.div`

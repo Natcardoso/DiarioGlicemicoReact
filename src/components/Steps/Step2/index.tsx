@@ -27,15 +27,14 @@ const Step2 = ({ setPageStep }: Props): JSX.Element => {
             .string()
             .required(required)
             .min(3, "Nome inválido, minímo 3 caracters!"),
-        birtDate: yup.string().required(required),
+        birtDate: yup.date().required(required),
         cel: yup
             .string()
             .required(required)
             .max(15, "O Celular deve conter no minímo 9 digitos"),
         peso: yup.number().typeError("Somente números").required(required),
-        // .max(4, "O Peso deve conter no minímo 4 digitos"),
         alt: yup.number().required(required).typeError("Somente números"),
-        // .max(5, "A altura deve conter no minímo 5 digitos"),
+        sex: yup.string().required(required),
     });
 
     const {
@@ -61,7 +60,6 @@ const Step2 = ({ setPageStep }: Props): JSX.Element => {
                 >
                     <input
                         autoFocus
-                        type="name"
                         {...register("name")}
                         onChange={(event) => {
                             const { value } = event.target;
@@ -102,7 +100,6 @@ const Step2 = ({ setPageStep }: Props): JSX.Element => {
                             }}
                         >
                             <input
-                                type="tel"
                                 maxLength={15}
                                 placeholder="(00) 00000-0000"
                                 {...register("cel")}
@@ -148,6 +145,7 @@ const Step2 = ({ setPageStep }: Props): JSX.Element => {
                         <input type="radio" {...register("sex")} id="dontSay" />
                         <label htmlFor="dontSay">Prefiro não dizer!</label>
                     </div>
+                    <p>{errors.sex?.message}</p>
                 </s.DivSeparatorInput>
                 <s.DivSeparatorInput>
                     <s.ContainerInput>
@@ -162,11 +160,11 @@ const Step2 = ({ setPageStep }: Props): JSX.Element => {
                             <input
                                 type="number"
                                 placeholder="00.00"
-                                // min={4}
+                                maxLength={4}
                                 {...register("peso")}
                                 onChange={(event) => {
                                     const { value } = event.target;
-                                    event.target.value = maskPeso(value);
+                                    // event.target.value = maskPeso(value);
                                     // maskOnlyNumbers(value);
                                 }}
                             />
@@ -193,7 +191,7 @@ const Step2 = ({ setPageStep }: Props): JSX.Element => {
                                 {...register("alt")}
                                 onChange={(event) => {
                                     const { value } = event.target;
-                                    event.target.value = maskAlt(value);
+                                    // event.target.value = maskAlt(value);
                                 }}
                             />
                             {errors.alt && (

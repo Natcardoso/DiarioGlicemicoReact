@@ -26,45 +26,55 @@ const Table = () => {
                     </button>
                 </s.ContainerFilter>
                 <p>Tabela de Controle</p>
-                <table>
-                    <tr className="thead">
-                        <td>Data</td>
-                        <td>Refeição</td>
-                        <td>Glicose</td>
-                        <td>Correção</td>
-                        <td>Observações</td>
-                        <td>Editar</td>
-                        <td>Excluir</td>
-                    </tr>
+                <s.DivTable></s.DivTable>
+                <div className="tbl-header">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Refeição</th>
+                                <th>Glicose</th>
+                                <th>Correção</th>
+                                <th>Observações</th>
+                                <th>Editar</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
 
-                    <tr className="data">
-                        <td>02/09/2022</td>
-                        <td>Café da tarde</td>
-                        <td>150</td>
-                        <td>5</td>
-                        <td>#</td>
-                        <td className="edit">
-                            <FiEdit2 size={20} />
-                        </td>
-                        <td className="closed">
-                            <VscTrash size={20} />
-                        </td>
-                    </tr>
-
-                    <tr className="data">
-                        <td>02/09/2022</td>
-                        <td>Café da tarde</td>
-                        <td>150</td>
-                        <td>5</td>
-                        <td>#</td>
-                        <td>
-                            <FiEdit2 size={20} />
-                        </td>
-                        <td>
-                            <VscTrash size={20} />
-                        </td>
-                    </tr>
-                </table>
+                <div className="tbl-content">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>02/09/2022</td>
+                                <td>Café da tarde</td>
+                                <td>150</td>
+                                <td>5</td>
+                                <td>#</td>
+                                <td className="edit">
+                                    <FiEdit2 size={20} />
+                                </td>
+                                <td className="closed">
+                                    <VscTrash size={20} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>02/09/2022</td>
+                                <td>Café da tarde</td>
+                                <td>150</td>
+                                <td>5</td>
+                                <td>#</td>
+                                <td>
+                                    <FiEdit2 size={20} />
+                                </td>
+                                <td>
+                                    <VscTrash size={20} />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </s.ContainerTable>
             {modalAddData && (
                 <ModalFormData setModalAddData={setModalAddData} />

@@ -69,7 +69,6 @@ const Login = (): JSX.Element => {
                                 <input
                                     autoFocus
                                     placeholder="Ex: fulano@abc.com"
-                                    type="email"
                                     {...register("email")}
                                 />
                                 {errors.email && (
