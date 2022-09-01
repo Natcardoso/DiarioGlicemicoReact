@@ -6,6 +6,7 @@ export const ContainerTable = styled.div`
     background: #dee8fe91;
     margin: 1rem 2rem;
     height: 76vh;
+    position: relative;
 
     p {
         font-size: 28px;
@@ -14,112 +15,56 @@ export const ContainerTable = styled.div`
         margin-bottom: 0.5rem;
     }
 
-    table {
-        table-layout: fixed;
-        /* background-color: white;
-        width: 100%;
-        overflow: hidden;
-        border-collapse: collapse;
-        box-shadow: 0px 0px 10px -5px var(--gray-medium);
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        border-radius: 20px;
-        cursor: default; */
-
-        .tbl-header {
-            background-color: var(--blue-dark);
-            color: white;
-
-            th {
-                font-size: 18px;
-                padding: 1rem;
-                font-weight: 500;
-            }
-        }
-
-        .tbl-content {
-            height: 40vh;
-            overflow-x: auto;
-            margin-top: 0px;
-            border: 2px solid red;
-        }
-
-        /* .data td {
-            color: var(--gray-medium);
-            font-weight: 300;
-            font-size: 16px;
-
-            padding: 1rem;
-        } */
-
-        /* .data {
-            border-top: 1px solid var(--gray-lighter);
-
-            :not(:last-child) {
-                border-bottom: 1px solid var(--gray-lighter);
-            }
-
-            :hover {
-                background-color: var(--gray-lighterOpacity);
-            }
-
-            svg {
-                cursor: pointer;
-            }
-
-            .edit:hover {
-                color: var(--green);
-            }
-
-            .closed:hover {
-                color: var(--red);
-            } */
-
-        /* .action {
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-
-                svg {
-                    cursor: pointer;
-                }
-
-                svg:nth-child(1):hover {
-                    color: var(--green);
-                }
-
-                svg:nth-child(2):hover {
-                    color: var(--red);
-                }
-            } */
+    .title {
+        color: var(--blue-dark);
+        font-size: 32px;
+        font-weight: 600;
     }
 
-    /* tr td:nth-child(1),
-        tr td:nth-child(3),
-        tr td:nth-child(4) {
-            width: 3rem;
-            text-align: center;
+    .buttonAdd {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 1.5rem;
+        right: 1rem;
+        padding: 0.3rem 0;
+
+        button {
+            padding-right: 1rem;
+            cursor: pointer;
+            background-color: transparent;
+
+            svg {
+                border-radius: 50px;
+                background-color: var(--blue-dark);
+                margin-right: 0.5rem;
+                color: white;
+            }
         }
 
-        tr td:nth-child(2) {
-            width: 14rem;
+        span {
+            font-weight: 600;
+            font-size: 20px;
         }
+    }
 
-        tr td:nth-child(6) {
-            width: 8rem;
-            text-align: center;
-        }
+    .tooltip {
+        text-align: center;
+        font-size: 16px !important;
+        position: absolute;
+        top: -2rem;
+        right: 0rem;
+        background: var(--fundoModal);
+        padding: 2px 8px;
+        color: #fff;
+        border-radius: 4px;
+        display: none;
+        width: max-content;
+    }
 
-        tr td:nth-child(7) {
-            width: 4rem;
-            text-align: center;
-        }
-
-        tr td:nth-child(8) {
-            width: 4rem;
-            text-align: center;
-        } */
-    /* } */
+    .buttonAdd:hover .tooltip {
+        display: block;
+    }
 `;
 
 export const ContainerFilter = styled.div`
@@ -141,26 +86,49 @@ export const ContainerFilter = styled.div`
             color: var(--blue-dark);
         }
     }
-
-    .buttonAdd {
-        display: flex;
-        align-items: center;
-        padding: 0.3rem 0;
-        padding-right: 1rem;
-        cursor: pointer;
-        font-weight: 500;
-        font-size: 20px;
-        background-color: transparent;
-
-        svg {
-            border-radius: 50px;
-            background-color: var(--blue-dark);
-            margin-right: 0.5rem;
-            color: white;
-        }
-    }
 `;
 
-export const DivTable = styled.div`
-    border: 2px solid red;
+export const ModalDelet = styled.div`
+    background: white;
+    width: 40%;
+    height: max-content;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+
+    svg {
+        width: 50%;
+    }
+
+    span {
+        color: var(--gray-medium);
+        font-weight: 300;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        button {
+            padding: 0.5rem;
+            border-radius: 10px;
+            margin-right: 1rem;
+            background: var(--blue-dark);
+            color: white;
+            font-size: 1rem;
+            width: 30%;
+            font-weight: 500;
+            cursor: pointer;
+
+            :hover {
+                opacity: 0.8;
+            }
+        }
+    }
 `;

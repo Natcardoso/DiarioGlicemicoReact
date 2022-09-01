@@ -77,10 +77,10 @@ export const DivInput = styled.div`
         border: none;
         outline: none;
         width: 90%;
+    }
 
-        ::placeholder {
-            color: var(--gray-dark);
-        }
+    input[type="text"]::-webkit-input-placeholder {
+        color: var(--gray-dark);
     }
 
     input[type="number"] {

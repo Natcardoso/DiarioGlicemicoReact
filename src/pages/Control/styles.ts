@@ -16,6 +16,7 @@ export const ContainerPage = styled.div`
 
 export const ContainerMenu = styled.div`
     width: 20%;
+    position: relative;
 
     span {
         font-size: 30px;
@@ -52,6 +53,46 @@ export const ContainerMenu = styled.div`
                     color: white;
                 }
             }
+        }
+    }
+
+    .active {
+        background-color: var(--blue-dark);
+
+        svg,
+        p {
+            color: white !important;
+        }
+    }
+`;
+
+export const ContainerPop = styled.div`
+    position: absolute;
+    top: 17.5rem;
+    background-color: var(--blue-dark);
+    right: -15.5rem;
+    z-index: 1;
+    width: 250px;
+    color: #f7f7f7;
+    padding: 0.8rem;
+    border-radius: 0 20px 20px 0;
+
+    span {
+        font-size: 16px;
+    }
+
+    div {
+        display: flex;
+        margin-top: 1rem;
+
+        button {
+            border-radius: 5px;
+            padding: 0.3rem;
+            width: 100%;
+        }
+
+        button:first-child {
+            margin-right: 1rem;
         }
     }
 `;
@@ -187,7 +228,6 @@ export const Profile = styled.div`
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            width: 100%;
             font-weight: 300;
             position: absolute;
             top: 12rem;

@@ -10,11 +10,12 @@ export const Container = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: var(--fundoModal);
+    z-index: 1;
 `;
 
 export const Modal = styled.div`
-    width: 70%;
-    height: 80%;
+    width: 40%;
+    height: 85%;
     background-color: white;
     border-radius: 20px;
     padding: 2rem;
@@ -29,13 +30,27 @@ export const Modal = styled.div`
     }
 `;
 
-export const ContainerSeparate = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+export const Form = styled.form`
+    .titleModal {
+        font-size: 32px;
+        font-weight: 600;
+        color: var(--blue-dark);
+    }
 
-    .date {
-        width: 44%;
+    input[type="submit"] {
+        width: 100%;
+        border-radius: 8px;
+        padding: 0.5rem;
+        cursor: pointer;
+        background: var(--blue);
+        font-size: 20px;
+        color: white;
+        margin: 1rem 0;
+        transition: all 0.3s ease;
+
+        :hover {
+            background: var(--blue-dark);
+        }
     }
 `;
 
@@ -69,11 +84,11 @@ export const DivInput = styled.div`
         font-size: 20px;
         border: none;
         outline: none;
-        /* width: 100%; */
+        width: 100%;
+    }
 
-        ::placeholder {
-            color: var(--gray-dark);
-        }
+    input[type="text"]::-webkit-input-placeholder {
+        color: var(--gray-dark);
     }
 
     input[type="number"] {
@@ -81,8 +96,13 @@ export const DivInput = styled.div`
     }
 `;
 
-export const ContainerOption = styled.div`
+export const ContainerOptions = styled.div`
     margin-bottom: 2rem;
+
+    p {
+        position: absolute;
+        color: var(--red);
+    }
 
     input[type="radio"] {
         display: none;
@@ -102,9 +122,8 @@ export const ContainerOption = styled.div`
     }
 
     //café da manhã
-    label:nth-child(2) {
-        border: 2px solid red;
-        border: 1px solid var(--Option1);
+    label:nth-child(3) {
+        border: 0.5px solid var(--Option1);
         color: var(--Option1);
 
         :hover {
@@ -113,15 +132,15 @@ export const ContainerOption = styled.div`
             background: var(--Option1Background);
         }
     }
-    input[type="radio"]:checked + label:nth-child(2) {
+    input[type="radio"]:checked + label:nth-child(3) {
         color: var(--Option1);
         border: none;
         background: var(--Option1Background);
     }
 
     //almoço
-    label:nth-child(4) {
-        border: 1px solid var(--Option2);
+    label:nth-child(5) {
+        border: 0.5px solid var(--Option2);
         color: var(--Option2);
 
         :hover {
@@ -130,15 +149,15 @@ export const ContainerOption = styled.div`
             background: var(--Option2Background);
         }
     }
-    input[type="radio"]:checked + label:nth-child(4) {
+    input[type="radio"]:checked + label:nth-child(5) {
         color: var(--Option2);
         border: none;
         background: var(--Option2Background);
     }
 
     //café da tarde
-    label:nth-child(6) {
-        border: 1px solid var(--Option3);
+    label:nth-child(7) {
+        border: 0.5px solid var(--Option3);
         color: var(--Option3);
 
         :hover {
@@ -147,15 +166,15 @@ export const ContainerOption = styled.div`
             background: var(--Option3Background);
         }
     }
-    input[type="radio"]:checked + label:nth-child(6) {
+    input[type="radio"]:checked + label:nth-child(7) {
         color: var(--Option3);
         border: none;
         background: var(--Option3Background);
     }
 
     //jantar
-    label:nth-child(8) {
-        border: 1px solid var(--Option4);
+    label:nth-child(9) {
+        border: 0.5px solid var(--Option4);
         color: var(--Option4);
 
         :hover {
@@ -164,15 +183,15 @@ export const ContainerOption = styled.div`
             background: var(--Option4Background);
         }
     }
-    input[type="radio"]:checked + label:nth-child(8) {
+    input[type="radio"]:checked + label:nth-child(9) {
         color: var(--Option4);
         border: none;
         background: var(--Option4Background);
     }
 
     //outros
-    label:nth-child(10) {
-        border: 1px solid var(--Option5);
+    label:nth-child(11) {
+        border: 0.5px solid var(--Option5);
         color: var(--Option5);
 
         :hover {
@@ -182,11 +201,34 @@ export const ContainerOption = styled.div`
         }
     }
 
-    input[type="radio"]:checked + label:nth-child(10) {
+    input[type="radio"]:checked + label:nth-child(11) {
         color: var(--Option5);
         border: none;
         background: var(--Option5Background);
     }
+
+    .beforeOrAfter {
+        color: var(--gray-medium) !important;
+        border: 1px solid var(--gray-medium) !important;
+
+        :hover {
+            color: white !important;
+            border: 1px solid var(--blue-dark) !important;
+            background: var(--blue-dark) !important;
+        }
+    }
+
+    .beforeOrAfterChecked:checked + .beforeOrAfter {
+        color: white !important;
+        border: 1px solid var(--blue-dark) !important;
+        background: var(--blue-dark) !important;
+    }
 `;
 
-export const TitleOption = styled.div``;
+export const TitleOption = styled.div`
+    margin-bottom: 0.8rem;
+`;
+
+export const Options = styled.div`
+    margin-bottom: 0.3rem;
+`;

@@ -1,40 +1,37 @@
 import { createContext, useEffect, useState } from "react";
 
-// export type DataProps = {
-//     email: string;
-//     password: string;
-//     confirmPassword: string;
-//     name: string;
-//     birtDate: number;
-//     cel: number;
-//     sex: string;
-//     peso: number;
-//     alt: number;
-//     insulina: string;
-//     typeDiabete: string;
-// };
-
-// interface ContextProps {
-//     children?: React.ReactNode;
-// }
-
-// export interface DataContext {
-//     values: DataProps[];
-//     setValues: React.Dispatch<DataProps[]>;
-// }
-
 export const ValuesContext = createContext();
 
 export const ValuesProvider = ({ children }) => {
     const initialValues = JSON.parse(localStorage.getItem("user")) || [];
     const [values, setValues] = useState(initialValues);
 
+    const initialRegisterGlicemia =
+        JSON.parse(localStorage.getItem("registerGlicemia")) || [];
+    const [valuesRegisterTable, setValuesRegisterTable] = useState(
+        initialRegisterGlicemia
+    );
+
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify(values));
     }, [values]);
 
+    useEffect(() => {
+        localStorage.setItem(
+            "registerGlicemia",
+            JSON.stringify(valuesRegisterTable)
+        );
+    }, [valuesRegisterTable]);
+
     return (
-        <ValuesContext.Provider value={{ values, setValues }}>
+        <ValuesContext.Provider
+            value={{
+                values,
+                setValues,
+                valuesRegisterTable,
+                setValuesRegisterTable,
+            }}
+        >
             {children}
         </ValuesContext.Provider>
     );

@@ -1,83 +1,141 @@
 import { VscTrash } from "react-icons/vsc";
 import { FiEdit2 } from "react-icons/fi";
-import { BiSearchAlt } from "react-icons/bi";
 import { IoMdAddCircle } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
+import { ReactComponent as IconDelete } from "./img/logoDelet.svg";
 import * as s from "./styles";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import MaterialTable from "@material-table/core";
+import "./stylesTable.css";
 import ModalFormData from "../ModalFormData";
+import { Container } from "../ModalFormData/styles";
+import { ValuesContext } from "../../context/ValuesForm";
+import { useNavigate } from "react-router-dom";
 
 const Table = () => {
     const [modalAddData, setModalAddData] = useState(false);
+    const [openPopupDelete, setOpenPopupDelete] = useState(false);
+    const [id, setId] = useState<number>(-1);
+    const [openPopupEdit, setOpenPopupEdit] = useState(false);
+    const { setValuesRegisterTable, valuesRegisterTable } =
+        useContext(ValuesContext);
+
+    const confirmDelete = () => {
+        setOpenPopupDelete(false);
+
+        const data = valuesRegisterTable.filter((item: any, i: number) => {
+            return i !== id;
+        });
+
+        setValuesRegisterTable(data);
+    };
 
     return (
         <>
             <s.ContainerTable>
-                <s.ContainerFilter>
-                    <div>
-                        <BiSearchAlt size={40} />
-                        <input type="text" placeholder="Pesquisar..." />
-                    </div>
-                    <button
-                        className="buttonAdd"
-                        onClick={() => setModalAddData(true)}
-                    >
+                <span className="title">Tabela de controle</span>
+                <div className="buttonAdd">
+                    <button onClick={() => setModalAddData(true)}>
                         <IoMdAddCircle size={40} />
-                        <span>Adicionar</span>
                     </button>
-                </s.ContainerFilter>
-                <p>Tabela de Controle</p>
-                <s.DivTable></s.DivTable>
-                <div className="tbl-header">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Data</th>
-                                <th>Refeição</th>
-                                <th>Glicose</th>
-                                <th>Correção</th>
-                                <th>Observações</th>
-                                <th>Editar</th>
-                                <th>Excluir</th>
-                            </tr>
-                        </thead>
-                    </table>
+                    <span className="tooltip">Adicionar</span>
                 </div>
-
-                <div className="tbl-content">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>02/09/2022</td>
-                                <td>Café da tarde</td>
-                                <td>150</td>
-                                <td>5</td>
-                                <td>#</td>
-                                <td className="edit">
-                                    <FiEdit2 size={20} />
-                                </td>
-                                <td className="closed">
-                                    <VscTrash size={20} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>02/09/2022</td>
-                                <td>Café da tarde</td>
-                                <td>150</td>
-                                <td>5</td>
-                                <td>#</td>
-                                <td>
-                                    <FiEdit2 size={20} />
-                                </td>
-                                <td>
-                                    <VscTrash size={20} />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <MaterialTable
+                    title=""
+                    columns={[
+                        {
+                            title: "Data",
+                            field: "date",
+                            type: "date",
+                            width: "4rem",
+                        },
+                        {
+                            title: "Período",
+                            field: "beforeOrAfter",
+                            type: "string",
+                            width: "4rem",
+                        },
+                        {
+                            title: "Refeição",
+                            field: "meal",
+                            type: "string",
+                            width: "11rem",
+                        },
+                        {
+                            title: "Glicemia",
+                            field: "glicemia",
+                            type: "numeric",
+                            align: "center",
+                            width: "5rem",
+                            sorting: false,
+                        },
+                        {
+                            title: "Correção",
+                            field: "correcao",
+                            type: "numeric",
+                            align: "center",
+                            width: "5rem",
+                            defaultSort: "asc",
+                            sorting: false,
+                        },
+                        {
+                            title: "Observações",
+                            field: "obs",
+                            type: "string",
+                            sorting: false,
+                        },
+                    ]}
+                    data={[...valuesRegisterTable]}
+                    actions={[
+                        {
+                            icon: () => <FiEdit2 className="edit" />,
+                            tooltip: "Editar",
+                            onClick: (e, data) => {
+                                setId(data.tableData.id);
+                                setModalAddData(true);
+                            },
+                        },
+                        {
+                            icon: () => <VscTrash className="delete" />,
+                            tooltip: "Deletar",
+                            onClick: (e, data) => {
+                                setId(data.tableData.id);
+                                setOpenPopupDelete(true);
+                            },
+                        },
+                    ]}
+                    options={{
+                        search: true,
+                        searchText: "Pesquisar",
+                        actionsColumnIndex: -1,
+                        paginationType: "stepped",
+                    }}
+                />
             </s.ContainerTable>
             {modalAddData && (
-                <ModalFormData setModalAddData={setModalAddData} />
+                <ModalFormData id={id} setModalAddData={setModalAddData} />
+            )}
+            {openPopupDelete && (
+                <Container>
+                    <s.ModalDelet>
+                        <IconDelete />
+                        <h1>Tem certeza?</h1>
+                        <span>
+                            Se eliminar não voltará a ver este conteúdo!
+                        </span>
+                        <div>
+                            <button type="button" onClick={confirmDelete}>
+                                Sim, apagar isto!
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setOpenPopupDelete(false)}
+                            >
+                                Cancelar
+                            </button>
+                        </div>
+                    </s.ModalDelet>
+                </Container>
             )}
         </>
     );

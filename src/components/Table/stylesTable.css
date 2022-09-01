@@ -1,0 +1,70 @@
+.MuiPaper-rounded {
+    border-radius: 20px !important;
+    margin-top: 1.5rem;
+    height: 35rem;
+}
+
+.MTableToolbar-searchField-10{
+    position: absolute !important;
+    background-color: transparent;
+    top: -5rem;
+    right: 5rem;
+}
+
+.MTableToolbar-root-5{
+   min-height: 0.5rem !important;
+}
+
+.Component-horizontalScrollContainer-12{
+    height: 31rem;
+}
+
+.ForwardRef\(MTableSteppedPaginationRef\)-root-20{
+    position: absolute;
+    left: 28rem;
+}
+
+.MuiTablePagination-root:last-child {
+    border: none;
+}
+
+.MuiPaper-elevation2 {
+    box-shadow: none !important;
+}
+
+.delete, .edit {
+    cursor: pointer;
+}
+
+.edit:hover {
+    color: var(--green);
+}
+
+.delete:hover {
+    color: var(--red);
+}
+
+.MuiSelect-select.MuiSelect-select, .MuiSelect-icon {
+    display: none !important;
+}
+
+.MuiInputBase-root {
+    font-family: 'Poppins', sans-serif !important;
+    background: white;
+    padding: 0.5rem 0;
+    padding-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.MuiInput-underline:before, .MuiInput-underline:after {
+    display: none;
+}
+
+.MuiTableCell-body:nth-child(3) span { 
+    background-color: var(--blue-dark) !important;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+}
+
+
