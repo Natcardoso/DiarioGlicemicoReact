@@ -10,6 +10,12 @@ type Props = {
 const MenuSteps = ({ pageStep }: Props) => {
     return (
         <s.Steps>
+            <s.Linha1
+                style={{
+                    background: pageStep == 1 || pageStep == 2 ? "#35c369" : "",
+                }}
+            />
+            <s.Linha2 style={{ background: pageStep == 2 ? "#35c369" : "" }} />
             <div>
                 {pageStep == 1 || pageStep == 2 ? (
                     <BsCheckCircleFill

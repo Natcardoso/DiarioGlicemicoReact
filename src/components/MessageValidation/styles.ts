@@ -10,6 +10,7 @@ export const ContainerModal = styled.div`
     background: var(--fundoModal);
     width: 100vw;
     height: 100vh;
+    z-index: 2;
 `;
 
 export const Modal = styled.div`
@@ -31,31 +32,54 @@ export const Modal = styled.div`
         cursor: pointer;
     }
 
-    svg:nth-child(2) {
-        width: 50%;
-    }
-
-    span:nth-child(3) {
+    span:nth-child(2) {
         font-size: 32px;
         font-weight: 600;
         margin-bottom: 0;
     }
 
-    span:nth-child(4) {
-        font-size: 24px;
+    span:nth-child(3) {
+        font-size: 20px;
         font-weight: 300;
         color: var(--gray-medium);
     }
 
+    div {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        margin: 1.5rem 0;
+
+        button {
+            width: 20%;
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            cursor: pointer;
+            background: var(--blue);
+            font-size: 20px;
+            color: white;
+            transition: all 0.3s ease;
+
+            :hover {
+                background: var(--blue-dark);
+            }
+        }
+
+        .register {
+            width: 40%;
+            margin-right: 1rem;
+        }
+    }
+
     button {
-        width: max-content;
+        width: 20%;
         border-radius: 8px;
-        padding: 1rem;
+        padding: 0.5rem 0;
         cursor: pointer;
         background: var(--blue);
         font-size: 20px;
         color: white;
-        margin: 1rem 0;
         transition: all 0.3s ease;
 
         :hover {

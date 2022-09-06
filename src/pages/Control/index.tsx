@@ -1,24 +1,49 @@
 import React, { createRef, useState } from "react";
 import * as s from "./styles";
-import { FaUserCircle } from "react-icons/fa";
-import { RiEditCircleFill } from "react-icons/ri";
 import { IoExit } from "react-icons/io5";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { MdSpaceDashboard } from "react-icons/md";
 import IconWelcome from "./img/gotaSangue.png";
 import Table from "../../components/Table";
 import { useNavigate } from "react-router-dom";
+import UploadAvatar from "../../components/UploadAvatar";
 
 const Control = () => {
     const [popupOpenExit, setPopupOpenExit] = useState<boolean>(false);
     const navigate = useNavigate();
     const divExit = createRef<HTMLDivElement>();
 
+    // "https://polylab.com.br/wp-content/uploads/2021/10/glicemia.jpg"
     return (
         <s.Container>
             <s.ContainerPage>
                 <s.ContainerMenu>
-                    <span>"img logo" "nome logo"</span>
+                    <img
+                        className="logo"
+                        src="https://educacionendiabetes.es/wp-content/uploads/2017/09/educacionendiabetes-icono-fb.png"
+                    />
+                    <s.Profile>
+                        <div className="user">
+                            <div className="infoInitial">
+                                <UploadAvatar />
+                                <span>Natália Almeida</span>
+                            </div>
+                            <s.TextDescriptionUser>
+                                <div>
+                                    <span>Tipo 1</span>
+                                    <p>Diabete</p>
+                                </div>
+                                <div>
+                                    <span>Caneta</span>
+                                    <p>Insulina</p>
+                                </div>
+                                <div>
+                                    <span>20 anos</span>
+                                    <p>Idade</p>
+                                </div>
+                            </s.TextDescriptionUser>
+                        </div>
+                    </s.Profile>
                     <div className="menu">
                         <div>
                             <MdSpaceDashboard size={30} />
@@ -78,22 +103,29 @@ const Control = () => {
                     <Table />
                 </s.DivContent>
                 <s.ContainerProfile>
-                    <s.Profile>
-                        <div>
-                            <span>Meu perfil</span>
-                            <RiEditCircleFill size={30} />
-                        </div>
+                    {/* <s.Profile>
                         <div className="user">
-                            <div>
-                                <FaUserCircle size={90} />
-                                <span>Natália A Cardoso</span>
+                            <div className="infoInitial">
+                                <UploadAvatar />
+                                <span>Natália Almeida</span>
                             </div>
-                            <div className="textDescriptionUser">
-                                <span>Diabete tipo 1</span>
-                                <span>20 anos</span>
-                            </div>
+                            <s.TextDescriptionUser>
+                                <div>
+                                    <span>Tipo 1</span>
+                                    <p>Diabete</p>
+                                </div>
+                                <div>
+                                    <span>Caneta</span>
+                                    <p>Insulina</p>
+                                </div>
+                                <div>
+                                    <span>20 anos</span>
+                                    <p>Idade</p>
+                                </div>
+                            </s.TextDescriptionUser>
                         </div>
-                    </s.Profile>
+                    </s.Profile> */}
+                    {/* dashboard */}
                 </s.ContainerProfile>
             </s.ContainerPage>
         </s.Container>

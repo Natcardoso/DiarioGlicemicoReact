@@ -27,14 +27,19 @@ const Step2 = ({ setPageStep }: Props): JSX.Element => {
             .string()
             .required(required)
             .min(3, "Nome inválido, minímo 3 caracters!"),
-        birtDate: yup.date().required(required),
+        birtDate: yup
+            .date()
+            .required(required)
+            .typeError("Campo obrigatório!")
+            .max(new Date(), "Não é possível incluir uma data futura")
+            .min("1950-11-13", "Data inválida!"),
         cel: yup
             .string()
             .required(required)
-            .max(15, "O Celular deve conter no minímo 9 digitos"),
-        peso: yup.number().typeError("Somente números").required(required),
-        alt: yup.number().required(required).typeError("Somente números"),
-        sex: yup.string().required(required),
+            .max(15, "O Celular deve conter no minímo 10 digitos"),
+        peso: yup.number().required(required),
+        alt: yup.number().required(required),
+        sex: yup.string().required(required).typeError("Campo obrigatório!"),
     });
 
     const {
@@ -158,14 +163,12 @@ const Step2 = ({ setPageStep }: Props): JSX.Element => {
                             }}
                         >
                             <input
-                                type="number"
                                 placeholder="00.00"
-                                maxLength={4}
+                                maxLength={5}
                                 {...register("peso")}
                                 onChange={(event) => {
                                     const { value } = event.target;
-                                    // event.target.value = maskPeso(value);
-                                    // maskOnlyNumbers(value);
+                                    event.target.value = maskPeso(value);
                                 }}
                             />
                             {errors.peso && (
@@ -185,13 +188,12 @@ const Step2 = ({ setPageStep }: Props): JSX.Element => {
                             }}
                         >
                             <input
-                                type="number"
                                 placeholder="0.00"
                                 maxLength={4}
                                 {...register("alt")}
                                 onChange={(event) => {
                                     const { value } = event.target;
-                                    // event.target.value = maskAlt(value);
+                                    event.target.value = maskAlt(value);
                                 }}
                             />
                             {errors.alt && (

@@ -5,7 +5,6 @@ export const ContainerTable = styled.div`
     border-radius: 20px;
     background: #dee8fe91;
     margin: 1rem 2rem;
-    height: 76vh;
     position: relative;
 
     p {
@@ -25,7 +24,7 @@ export const ContainerTable = styled.div`
         display: flex;
         align-items: center;
         position: absolute;
-        top: 1.5rem;
+        top: 2.5rem;
         right: 1rem;
         padding: 0.3rem 0;
 

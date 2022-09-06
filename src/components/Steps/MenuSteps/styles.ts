@@ -1,16 +1,36 @@
 import styled from "styled-components";
 
+export const Linha1 = styled.div`
+    background: var(--gray-medium);
+    height: 0.1rem;
+    position: absolute;
+    width: 28%;
+    top: 1.5rem;
+    left: 5.5rem;
+`;
+
+export const Linha2 = styled.div`
+    background: var(--gray-medium);
+    height: 0.1rem;
+    position: absolute;
+    width: 28%;
+    top: 1.5rem;
+    right: 7.5rem;
+`;
+
 export const Steps = styled.div`
     height: 5rem;
     display: flex;
     align-items: center;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--gray-light);
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
 
     div {
+        z-index: 1;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        margin-right: 4rem;
 
         svg {
             border-radius: 20%;

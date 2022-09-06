@@ -45,10 +45,10 @@ export const DivInput = styled.div`
     }
 
     input {
+        width: 100%;
         font-size: 20px;
         border: none;
         outline: none;
-        width: 80%;
     }
 
     input[type="text"]::-webkit-input-placeholder {
@@ -142,6 +142,12 @@ export const DivSeparatorInput = styled.div`
             background: var(--blue-lighterOpacity);
         }
     }
+
+    p {
+        position: absolute;
+        color: var(--red);
+        width: 40%;
+    }
 `;
 
 export const DivOptionStep2 = styled.div`
@@ -190,7 +196,7 @@ export const DivOptionStep2 = styled.div`
 `;
 
 export const DivOptionStep3 = styled.div`
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
     margin-top: 0.4rem;
 
     input[type="radio"] {
@@ -222,5 +228,14 @@ export const DivOptionStep3 = styled.div`
         color: var(--blue);
         border: 2px solid var(--blue-medium);
         background: var(--blue-lighterOpacity);
+    }
+`;
+
+export const DivSeparatorInput3 = styled.div`
+    margin-bottom: 2rem;
+
+    p {
+        position: absolute;
+        color: var(--red);
     }
 `;

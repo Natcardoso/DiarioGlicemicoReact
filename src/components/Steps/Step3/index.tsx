@@ -16,7 +16,7 @@ type Props = {
 const Step3 = ({ setPageStep }: Props): JSX.Element => {
     const [modalVisible, setModalVisible] = useState(false);
     const { values, setValues } = useContext(ValuesContext);
-    const required = "Campo obrigatório!";
+    const required = "Campo obrigatório! Selecione uma opção.";
     const { actions, state } = useStateMachine({ updateForm });
     const schema = yup.object({
         typeDiabete: yup.string().required(required),
@@ -46,75 +46,79 @@ const Step3 = ({ setPageStep }: Props): JSX.Element => {
             </span>
 
             <label>Qual seu tipo de diabete?</label>
-            <s.DivOptionStep3>
-                <input
-                    type="radio"
-                    {...register("typeDiabete")}
-                    value=" Tipo 1"
-                    id="typeOne"
-                />
-                <label htmlFor="typeOne">Tipo 1</label>
+            <s.DivSeparatorInput3>
+                <s.DivOptionStep3>
+                    <input
+                        type="radio"
+                        {...register("typeDiabete")}
+                        value=" Tipo 1"
+                        id="typeOne"
+                    />
+                    <label htmlFor="typeOne">Tipo 1</label>
 
-                <input
-                    type="radio"
-                    {...register("typeDiabete")}
-                    value="Tipo 2"
-                    id="typeTwo"
-                />
-                <label htmlFor="typeTwo">Tipo 2</label>
+                    <input
+                        type="radio"
+                        {...register("typeDiabete")}
+                        value="Tipo 2"
+                        id="typeTwo"
+                    />
+                    <label htmlFor="typeTwo">Tipo 2</label>
 
-                <input
-                    type="radio"
-                    {...register("typeDiabete")}
-                    value="Pré-diabetes"
-                    id="preDiabetes"
-                />
-                <label htmlFor="preDiabetes">Pré-diabetes</label>
+                    <input
+                        type="radio"
+                        {...register("typeDiabete")}
+                        value="Pré-diabetes"
+                        id="preDiabetes"
+                    />
+                    <label htmlFor="preDiabetes">Pré-diabetes</label>
 
-                <input
-                    type="radio"
-                    {...register("typeDiabete")}
-                    value="Gestacional"
-                    id="gestational"
-                />
-                <label htmlFor="gestational">Gestacional</label>
+                    <input
+                        type="radio"
+                        {...register("typeDiabete")}
+                        value="Gestacional"
+                        id="gestational"
+                    />
+                    <label htmlFor="gestational">Gestacional</label>
+                </s.DivOptionStep3>
                 <p>{errors.typeDiabete?.message}</p>
-            </s.DivOptionStep3>
-            <label>Quais medicamentos você usa? (insulina)</label>
-            <s.DivOptionStep3>
-                <input
-                    type="radio"
-                    {...register("insulina")}
-                    value="Caneta"
-                    id="caneta"
-                />
-                <label htmlFor="caneta">Caneta</label>
+            </s.DivSeparatorInput3>
+            <s.DivSeparatorInput3>
+                <label>Quais medicamentos você usa? (insulina)</label>
+                <s.DivOptionStep3>
+                    <input
+                        type="radio"
+                        {...register("insulina")}
+                        value="Caneta"
+                        id="caneta"
+                    />
+                    <label htmlFor="caneta">Caneta</label>
 
-                <input
-                    type="radio"
-                    {...register("insulina")}
-                    value="Seringa"
-                    id="seringa"
-                />
-                <label htmlFor="seringa">Seringa</label>
+                    <input
+                        type="radio"
+                        {...register("insulina")}
+                        value="Seringa"
+                        id="seringa"
+                    />
+                    <label htmlFor="seringa">Seringa</label>
 
-                <input
-                    type="radio"
-                    {...register("insulina")}
-                    value="Bomba de insulina"
-                    id="insulinPump"
-                />
-                <label htmlFor="insulinPump">Bomba de insulina</label>
+                    <input
+                        type="radio"
+                        {...register("insulina")}
+                        value="Bomba de insulina"
+                        id="insulinPump"
+                    />
+                    <label htmlFor="insulinPump">Bomba de insulina</label>
 
-                <input
-                    type="radio"
-                    {...register("insulina")}
-                    value="Não uso insulina"
-                    id="notInsulina"
-                />
-                <label htmlFor="notInsulina">Não uso insulina</label>
+                    <input
+                        type="radio"
+                        {...register("insulina")}
+                        value="Não uso insulina"
+                        id="notInsulina"
+                    />
+                    <label htmlFor="notInsulina">Não uso insulina</label>
+                </s.DivOptionStep3>
                 <p>{errors.insulina?.message}</p>
-            </s.DivOptionStep3>
+            </s.DivSeparatorInput3>
             <s.ContainerButton>
                 <input
                     className="back"

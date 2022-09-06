@@ -12,18 +12,18 @@ export const Container = styled.div`
 export const ContainerForm = styled.div`
     display: flex;
     background: #fff;
-    height: 90%;
-    width: 100%;
+    height: 95%;
+    width: 80%;
     border-radius: 24px;
 `;
 
 export const ContainerLogo = styled.div`
-    width: 50%;
+    width: 65%;
     border-radius: 24px 0 0 24px;
     background: var(--blue-dark);
 
     svg {
-        margin-top: 8rem;
+        margin-top: 10rem;
     }
 `;
 

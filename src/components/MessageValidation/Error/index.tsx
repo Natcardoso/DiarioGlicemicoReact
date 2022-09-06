@@ -16,18 +16,26 @@ const ModalError = ({ type, message, setModalVisible }: Props): JSX.Element => {
     return (
         <s.ContainerModal>
             <s.Modal>
-                <IoIosCloseCircleOutline
-                    size={40}
-                    onClick={() => setModalVisible(false)}
-                    className="close"
-                />
                 <ImgError />
                 <span>OPS!</span>
                 <span>{message}</span>
                 {type === "cadastro" ? (
-                    <button type="button" onClick={() => navigate("/cadastro")}>
-                        Quero me cadastrar!
-                    </button>
+                    <div>
+                        <button
+                            className="register"
+                            type="button"
+                            onClick={() => navigate("/cadastro")}
+                        >
+                            Quero me cadastrar!
+                        </button>
+                        <button
+                            className="register"
+                            type="button"
+                            onClick={() => setModalVisible(false)}
+                        >
+                            Fechar
+                        </button>
+                    </div>
                 ) : (
                     <button
                         type="button"

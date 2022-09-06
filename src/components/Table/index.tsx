@@ -1,22 +1,19 @@
 import { VscTrash } from "react-icons/vsc";
 import { FiEdit2 } from "react-icons/fi";
 import { IoMdAddCircle } from "react-icons/io";
-import { IoMdClose } from "react-icons/io";
 import { ReactComponent as IconDelete } from "./img/logoDelet.svg";
 import * as s from "./styles";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import MaterialTable from "@material-table/core";
 import "./stylesTable.css";
 import ModalFormData from "../ModalFormData";
 import { Container } from "../ModalFormData/styles";
 import { ValuesContext } from "../../context/ValuesForm";
-import { useNavigate } from "react-router-dom";
 
 const Table = () => {
     const [modalAddData, setModalAddData] = useState(false);
     const [openPopupDelete, setOpenPopupDelete] = useState(false);
     const [id, setId] = useState<number>(-1);
-    const [openPopupEdit, setOpenPopupEdit] = useState(false);
     const { setValuesRegisterTable, valuesRegisterTable } =
         useContext(ValuesContext);
 
@@ -30,6 +27,9 @@ const Table = () => {
         setValuesRegisterTable(data);
     };
 
+    var textInutil = document.querySelector(".MuiTableCell-body");
+    textInutil?.setAttribute("id", "deleteText");
+
     return (
         <>
             <s.ContainerTable>
@@ -42,6 +42,10 @@ const Table = () => {
                 </div>
                 <MaterialTable
                     title=""
+                    initialFormData={{
+                        date: "09/24/2022",
+                        beforeOrAfter: "Antes",
+                    }}
                     columns={[
                         {
                             title: "Data",

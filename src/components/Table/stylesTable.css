@@ -1,13 +1,12 @@
 .MuiPaper-rounded {
     border-radius: 20px !important;
     margin-top: 1.5rem;
-    height: 35rem;
 }
 
 .MTableToolbar-searchField-10{
     position: absolute !important;
     background-color: transparent;
-    top: -5rem;
+    top: -4rem;
     right: 5rem;
 }
 
@@ -15,13 +14,9 @@
    min-height: 0.5rem !important;
 }
 
-.Component-horizontalScrollContainer-12{
-    height: 31rem;
-}
-
 .ForwardRef\(MTableSteppedPaginationRef\)-root-20{
     position: absolute;
-    left: 28rem;
+    left: 26rem;
 }
 
 .MuiTablePagination-root:last-child {
@@ -67,4 +62,6 @@
     border-radius: 20px;
 }
 
-
+#deleteText{
+    display: none;
+}

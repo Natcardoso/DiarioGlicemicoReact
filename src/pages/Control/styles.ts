@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 0;
     height: 100vh;
 `;
 
@@ -15,18 +15,21 @@ export const ContainerPage = styled.div`
 `;
 
 export const ContainerMenu = styled.div`
-    width: 20%;
+    width: 25%;
     position: relative;
 
-    span {
-        font-size: 30px;
+    .logo {
+        width: 20%;
+        padding: 0.5rem;
     }
 
     .menu {
+        z-index: 2;
+        background-color: white;
         display: flex;
         flex-direction: column;
-        margin-top: 5rem;
-        margin-left: 2rem;
+        margin-top: 3rem;
+        margin-left: 6rem;
 
         div {
             padding: 1rem;
@@ -35,6 +38,7 @@ export const ContainerMenu = styled.div`
             font-size: 18px;
             cursor: pointer;
             border-radius: 20px 0 0 20px;
+            margin: 0.5rem 0;
 
             svg {
                 color: var(--blue-dark);
@@ -66,16 +70,29 @@ export const ContainerMenu = styled.div`
     }
 `;
 
+const AnimationPopupExit = keyframes`
+    from{
+        left: 10rem;
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        left: 22rem;
+    }
+`;
+
 export const ContainerPop = styled.div`
-    position: absolute;
-    top: 17.5rem;
+    position: fixed;
+    bottom: 13.5rem;
     background-color: var(--blue-dark);
-    right: -15.5rem;
+    left: 22rem;
     z-index: 1;
     width: 250px;
     color: #f7f7f7;
     padding: 0.8rem;
     border-radius: 0 20px 20px 0;
+    animation: ${AnimationPopupExit} 0.5s normal;
 
     span {
         font-size: 16px;
@@ -105,11 +122,12 @@ export const DivContent = styled.div`
 
 export const Welcome = styled.div`
     display: flex;
+    align-items: center;
     justify-content: space-between;
     border-radius: 20px;
     background: #dee8fe91;
     margin: 1rem 2rem;
-    height: 15vh;
+    height: 20vh;
     padding: 1rem 2rem;
     position: relative;
 
@@ -134,7 +152,7 @@ export const Welcome = styled.div`
         position: absolute;
         bottom: 0;
         right: 2rem;
-        width: 12%;
+        width: 14%;
     }
 `;
 
@@ -193,14 +211,14 @@ export const ContainerProfile = styled.div`
 `;
 
 export const Profile = styled.div`
-    padding: 2rem;
-    height: 50%;
+    padding: 1rem;
+    margin-top: 2rem;
+    color: var(--blue-dark);
 
     div:nth-child(1) {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 3rem;
         font-size: 20px;
         font-weight: 700;
 
@@ -213,25 +231,42 @@ export const Profile = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        font-size: 24px;
-        font-weight: 500;
 
-        div:nth-child(1) {
+        .infoInitial {
             margin: 0;
+            flex-direction: column;
 
-            svg {
-                margin-right: 1rem;
+            span {
+                font-size: 26px;
+                font-weight: 600;
+                margin-top: 1rem;
             }
         }
+    }
+`;
 
-        .textDescriptionUser {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            font-weight: 300;
-            position: absolute;
-            top: 12rem;
-            right: 3rem;
+export const TextDescriptionUser = styled.div`
+    margin-top: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray-light);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    div {
+        font-weight: 300 !important;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+
+        span {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        p {
+            color: var(--gray-medium);
+            font-size: 14px;
         }
     }
 `;
