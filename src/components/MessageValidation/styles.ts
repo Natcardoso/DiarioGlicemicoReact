@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const ContainerModal = styled.div`
     position: fixed;
@@ -13,6 +13,16 @@ export const ContainerModal = styled.div`
     z-index: 2;
 `;
 
+const animationModal = keyframes`
+    from {
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+`;
+
 export const Modal = styled.div`
     display: flex;
     align-items: center;
@@ -24,6 +34,7 @@ export const Modal = styled.div`
     background-color: white;
     padding: 2rem;
     position: relative;
+    animation: ${animationModal} 0.5s linear;
 
     .close {
         position: absolute;

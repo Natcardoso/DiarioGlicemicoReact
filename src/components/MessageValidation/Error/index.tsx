@@ -1,13 +1,13 @@
 import React from "react";
 import * as s from "../styles";
-import { ReactComponent as ImgError } from "../imgs/error.svg";
+import { ReactComponent as ImgError } from "../../../assets/error.svg";
 import { useNavigate } from "react-router-dom";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
 type Props = {
     message: string;
     setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
-    type: string;
+    type?: string;
 };
 
 const ModalError = ({ type, message, setModalVisible }: Props): JSX.Element => {

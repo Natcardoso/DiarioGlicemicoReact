@@ -1,41 +1,73 @@
 import { VscTrash } from "react-icons/vsc";
 import { FiEdit2 } from "react-icons/fi";
 import { IoMdAddCircle } from "react-icons/io";
-import { ReactComponent as IconDelete } from "./img/logoDelet.svg";
+import { ReactComponent as IconDelete } from "../../assets/iconDelete.svg";
 import * as s from "./styles";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MaterialTable from "@material-table/core";
 import "./stylesTable.css";
-import ModalFormData from "../ModalFormData";
-import { Container } from "../ModalFormData/styles";
-import { ValuesContext } from "../../context/ValuesForm";
+import ModalFormTable from "../ModalFormTable";
+import { Container } from "../ModalFormTable/styles";
+import { deleteDoc, doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase";
+import { AuthContext } from "../../context/authContext";
 
 const Table = () => {
     const [modalAddData, setModalAddData] = useState(false);
     const [openPopupDelete, setOpenPopupDelete] = useState(false);
-    const [id, setId] = useState<number>(-1);
-    const { setValuesRegisterTable, valuesRegisterTable } =
-        useContext(ValuesContext);
+    const [id, setId] = useState(-1);
+    const [nameAction, setNameAction] = useState("");
+    const [values, setValues] = useState<any[]>([]);
+    const { currentUser } = useContext(AuthContext);
 
-    const confirmDelete = () => {
-        setOpenPopupDelete(false);
+    const fetchData = async () => {
+        if (currentUser && currentUser.uid) {
+            const result = await getDoc(doc(db, "users", currentUser.uid));
+            const data = result.data();
+            debugger;
+            console.log(data);
 
-        const data = valuesRegisterTable.filter((item: any, i: number) => {
-            return i !== id;
-        });
-
-        setValuesRegisterTable(data);
+            if (data?.dataGlicemia) {
+                setValues(data.dataGlicemia);
+            } else {
+                setValues([]);
+            }
+        } else {
+            console.log("currentUser ou uid é undefined");
+        }
     };
 
-    var textInutil = document.querySelector(".MuiTableCell-body");
-    textInutil?.setAttribute("id", "deleteText");
+    useEffect(() => {
+        if (values.length > 0) {
+            fetchData();
+        }
+    }, [values]);
+    console.log(values);
+
+    const confirmDelete = async () => {
+        setOpenPopupDelete(false);
+        try {
+            // await deleteDoc(doc(db, "data", id));
+        } catch (err) {}
+
+        const data = values.filter((item: any, i: number) => {
+            return item.uid !== id;
+        });
+
+        setValues(data);
+    };
 
     return (
         <>
             <s.ContainerTable>
                 <span className="title">Tabela de controle</span>
                 <div className="buttonAdd">
-                    <button onClick={() => setModalAddData(true)}>
+                    <button
+                        onClick={() => {
+                            setModalAddData(true);
+                            setNameAction("add");
+                        }}
+                    >
                         <IoMdAddCircle size={40} />
                     </button>
                     <span className="tooltip">Adicionar</span>
@@ -89,20 +121,21 @@ const Table = () => {
                             sorting: false,
                         },
                     ]}
-                    data={[...valuesRegisterTable]}
+                    data={[values]}
                     actions={[
                         {
                             icon: () => <FiEdit2 className="edit" />,
                             tooltip: "Editar",
-                            onClick: (e, data) => {
+                            onClick: (e, data: any) => {
                                 setId(data.tableData.id);
+                                setNameAction("edit");
                                 setModalAddData(true);
                             },
                         },
                         {
                             icon: () => <VscTrash className="delete" />,
                             tooltip: "Deletar",
-                            onClick: (e, data) => {
+                            onClick: (e, data: any) => {
                                 setId(data.tableData.id);
                                 setOpenPopupDelete(true);
                             },
@@ -117,7 +150,11 @@ const Table = () => {
                 />
             </s.ContainerTable>
             {modalAddData && (
-                <ModalFormData id={id} setModalAddData={setModalAddData} />
+                <ModalFormTable
+                    id={id}
+                    nameAction={nameAction}
+                    setModalAddData={setModalAddData}
+                />
             )}
             {openPopupDelete && (
                 <Container>
@@ -132,6 +169,7 @@ const Table = () => {
                                 Sim, apagar isto!
                             </button>
                             <button
+                                className="cancel"
                                 type="button"
                                 onClick={() => setOpenPopupDelete(false)}
                             >

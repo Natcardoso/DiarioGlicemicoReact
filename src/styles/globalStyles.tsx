@@ -5,6 +5,10 @@ export default createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        
+        &::-webkit-input-placeholder {
+            color: var(--gray-medium);
+        }
     }
 
     *, button, input {
@@ -13,14 +17,14 @@ export default createGlobalStyle`
         outline: none;
         text-decoration: none;
     }
-
+  
     :root{
-        --blue-lighterOpacity: #DEE8FEBA;
-        --blue-lighter: #DEE8FE;
-        --blue-light: #BFD1FA;
-        --blue-medium: #7E9BF3;
-        --blue: #4853E5;
-        --blue-dark: #3942B6;
+        --blue-lighterOpacity: #E7EEFD;
+        --blue-lighter: #CFDDFB;
+        --blue-light: #9EB3EC;
+        --blue-medium: #5C72C0;
+        --blue: #3F52A1;
+        --blue-dark: #283781;
 
         --gray-lighterOpacity: #dcd9d943;
         --gray-lighter: #dad9d9b7;
@@ -32,7 +36,7 @@ export default createGlobalStyle`
         --red: rgb(209, 44, 56);
         --red-dark: rgb(187, 38, 49);
 
-        --green: #35c369;
+        --green: #7CC120;
 
         --fundoModal: #2a2929f2;
         --fundoControl: #eaeaeaed;
@@ -47,17 +51,16 @@ export default createGlobalStyle`
         --Option4Background: rgb(239 65 65 / 20%);
         --Option5: #B115BE;
         --Option5Background: rgb(177 21 190 / 20%); 
+
+        --box-1: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
     }
 
     .fade-enter {
         opacity: 0;
-        /* transform: translate(-50px); */
         z-index: 1;
     }
     .fade-enter.fade-enter-active {
-     opacity: 1;
-        /* transform: translate(0vh); */
-
+        opacity: 1;
         transition: opacity 500ms ease-in-out, transform 400ms ease-in;
     }
 `;

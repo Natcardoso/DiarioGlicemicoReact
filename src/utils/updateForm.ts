@@ -5,7 +5,7 @@ type userProps = {
     password: string;
     confirmPassword: string;
     name: string;
-    birtDate: number;
+    age: number;
     cel: number;
     sex: string;
     peso: number;
@@ -19,7 +19,7 @@ const userAccount: userProps = {
     password: "",
     confirmPassword: "",
     name: "",
-    birtDate: 0,
+    age: 0,
     cel: 0,
     sex: "",
     peso: 0,
@@ -30,19 +30,7 @@ const userAccount: userProps = {
 
 declare module "little-state-machine" {
     interface GlobalState {
-        yourDetail: {
-            email: string;
-            password: string;
-            confirmPassword: string;
-            name: string;
-            birtDate: number;
-            cel: number;
-            sex: string;
-            peso: number;
-            alt: number;
-            insulina: string;
-            typeDiabete: string;
-        };
+        yourDetail: userProps;
     }
 }
 

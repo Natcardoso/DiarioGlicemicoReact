@@ -47,8 +47,8 @@ const AnimationPopupEdit = keyframes`
 export const ContainerEditPhoto = styled.div`
     position: absolute;
     background: white;
-    left: 0rem;
-    top: 14.5rem;
+    right: 1.5rem;
+    top: 13.5rem;
     width: max-content;
     height: max-content;
     padding: 1.5rem;
@@ -60,13 +60,15 @@ export const ContainerEditPhoto = styled.div`
     animation: ${AnimationPopupEdit} 0.6s normal;
     z-index: 1;
 
-    div {
+    div:nth-child(1) {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center !important;
         text-align: center;
+    }
 
+    div:nth-child(2) {
         button {
             margin-top: 3rem;
             width: 40%;

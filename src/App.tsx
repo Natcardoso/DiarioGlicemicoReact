@@ -1,17 +1,16 @@
-import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import { ValuesProvider } from "./context/ValuesForm";
+import { AuthContextProvider } from "./context/authContext";
 import Router from "./router";
 import GlobalStyles from "./styles/globalStyles";
 
 function App() {
     return (
-        <ValuesProvider>
+        <AuthContextProvider>
             <BrowserRouter>
                 <GlobalStyles />
                 <Router />
             </BrowserRouter>
-        </ValuesProvider>
+        </AuthContextProvider>
     );
 }
 

@@ -5,31 +5,28 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     height: 100vh;
-    padding: 0 8rem;
-    background: rgb(244, 243, 246);
 `;
 
 export const ContainerForm = styled.div`
     display: flex;
     background: #fff;
-    height: 95%;
-    width: 80%;
-    border-radius: 24px;
+    height: 80%;
+    width: 65%;
+    border-radius: 10px;
+    box-shadow: var(--box-1);
 `;
 
 export const ContainerLogo = styled.div`
-    width: 65%;
-    border-radius: 24px 0 0 24px;
-    background: var(--blue-dark);
-
-    svg {
-        margin-top: 10rem;
-    }
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid var(--gray-lighter);
 `;
 
 export const ContainerStep = styled.div`
     width: 100%;
-    padding: 5rem;
+    padding: 2rem 3rem 3rem;
     position: relative;
 `;
 

@@ -114,6 +114,10 @@ export const ModalDelet = styled.div`
         display: flex;
         justify-content: center;
 
+        .cancel {
+            background: var(--gray-light);
+        }
+
         button {
             padding: 0.5rem;
             border-radius: 10px;

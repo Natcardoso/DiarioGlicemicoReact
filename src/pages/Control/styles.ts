@@ -3,8 +3,10 @@ import styled, { keyframes } from "styled-components";
 export const Container = styled.div`
     display: flex;
     align-items: center;
+    overflow: hidden;
     padding: 1rem 1rem 1rem 0;
     height: 100vh;
+    width: 100vw;
 `;
 
 export const ContainerPage = styled.div`
@@ -15,59 +17,69 @@ export const ContainerPage = styled.div`
 `;
 
 export const ContainerMenu = styled.div`
-    width: 25%;
+    width: 20%;
     position: relative;
+    text-align: center;
 
-    .logo {
-        width: 20%;
-        padding: 0.5rem;
+    .iconLogo {
+        width: 56px;
+        height: 56px;
     }
+`;
 
-    .menu {
-        z-index: 2;
-        background-color: white;
+type ActiveProps = {
+    active: boolean;
+};
+
+export const Menu = styled.div<ActiveProps>`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 88%;
+    z-index: 2;
+    background-color: white;
+    margin-top: 3rem;
+    margin-left: 2rem;
+
+    div {
+        padding: 1rem;
         display: flex;
-        flex-direction: column;
-        margin-top: 3rem;
-        margin-left: 6rem;
+        align-items: center;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 20px 0 0 20px;
+        margin: 0.2rem 0;
 
-        div {
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 20px 0 0 20px;
-            margin: 0.5rem 0;
+        svg {
+            color: var(--gray-medium);
+        }
 
+        p {
+            color: var(--gray-medium);
+            margin-left: 1rem;
+        }
+
+        :hover {
+            p,
             svg {
                 color: var(--blue-dark);
             }
-
-            p {
-                color: var(--gray-medium);
-                margin-left: 2rem;
-            }
-
-            :hover {
-                background: var(--blue-dark);
-
-                p,
-                svg {
-                    color: white;
-                }
-            }
         }
     }
 
-    .active {
-        background-color: var(--blue-dark);
-
-        svg,
-        p {
-            color: white !important;
+    div:nth-child(1) {
+        p,
+        svg {
+            color: ${({ active }) => (active ? "var(--blue-dark)" : "")};
         }
     }
+`;
+
+export const ContainerOptionsMenu = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    padding: 0 !important;
 `;
 
 const AnimationPopupExit = keyframes`
@@ -78,15 +90,14 @@ const AnimationPopupExit = keyframes`
 
     to {
         opacity: 1;
-        left: 22rem;
     }
 `;
 
 export const ContainerPop = styled.div`
     position: fixed;
-    bottom: 13.5rem;
+    top: 18rem;
     background-color: var(--blue-dark);
-    left: 22rem;
+    left: 18.3rem;
     z-index: 1;
     width: 250px;
     color: #f7f7f7;

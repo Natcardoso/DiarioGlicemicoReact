@@ -1,16 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Menu from "../../components/Menu";
+import MenuHome from "../../components/MenuHome";
 import Waves from "../../components/Waves";
-import { ReactComponent as Logo } from "./logo.svg";
+import { ReactComponent as IconHome } from "../../assets/iconHome.svg";
 import * as s from "./styles";
 
 const Home = () => {
     const navigate = useNavigate();
 
     return (
-        <>
-            <Menu />
+        <div style={{ height: "100vh", overflow: "hidden" }}>
+            <MenuHome />
             <Waves />
             <s.Container>
                 <s.ContainerText>
@@ -23,10 +23,10 @@ const Home = () => {
                         Vamos começar!
                     </button>
                 </s.ContainerText>
-                <Logo />
+                <IconHome />
             </s.Container>
             {/* <s.ContainerApresentation></s.ContainerApresentation> */}
-        </>
+        </div>
     );
 };
 

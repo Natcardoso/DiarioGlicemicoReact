@@ -1,14 +1,20 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+type PropsContainer = {
+    loadingActive: boolean;
+};
+export const Container = styled.div<PropsContainer>`
     display: flex;
-    justify-content: space-between;
+    justify-content: ${({ loadingActive }) =>
+        loadingActive ? "center" : "space-between"};
     align-items: center;
     margin: 0 8rem;
     height: 100vh;
 
-    svg:nth-child(1) {
-        margin-top: 8rem;
+    .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `;
 

@@ -9,7 +9,11 @@ export const maskPeso = (value: any) => {
     value = value.replace(/\D/g, "");
     value = value.replace(/^[0]+/, "");
 
-    value = value.replace(/^(\d{1,})(\d{2})$/, "$1.$2");
+    if (value.lenght < 4) {
+        value = value.replace(/^(\d{1,})(\d{2})$/, "$1.$2");
+    } else {
+        value = value.replace(/^(\d{2,})(\d{1})$/, "$1.$2");
+    }
 
     return value;
 };

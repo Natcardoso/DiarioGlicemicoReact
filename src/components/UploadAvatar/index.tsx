@@ -22,6 +22,7 @@ const UploadAvatar = () => {
 
     const getData = (imageSrc: string) => {
         setImageSrc(imageSrc);
+        console.log(imageSrc);
     };
 
     const savePhoto = () => {
