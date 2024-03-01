@@ -21,8 +21,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 📄 Funcionalidades
 
 - Autentificação de login
-- Formulário mult etapas
-- Mudar perfil
+- Formulário multi etapas
+- Editar perfil
 - Adicionar, Editar e Excluir registros de glicemia
 - Tabela com os registros
 
