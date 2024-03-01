@@ -1,1 +1,31 @@
-Diário de Glicemia
+
+<h1 align="center"> SugarLife - Diário de Glicemia </h1>
+
+<p align="center">
+   Projeto criado para conclusão de curso(TCC)
+</p>
+
+![image](https://github.com/Natcardoso/DiarioGlicemicoReact/assets/88684378/a2abd3d8-2526-456d-814a-bed825029f62)
+
+## 🚀 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- React
+- Typescript
+- Firebase
+- Styled-Components
+- Figma
+- Git, Github (actions, pages)
+
+## 📄 Funcionalidades
+
+- Autentificação de login
+- Formulário mult etapas
+- Mudar perfil
+- Adicionar, Editar e Excluir registros de glicemia
+- Tabela com os registros
+
+---
+
+Feito by Nat :wave:
